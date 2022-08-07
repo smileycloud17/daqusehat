@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="fontawesome/css/all.css"> -->
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="assets/Proyek Baru.png">
+    <title>Login Daqu Sehat</title>
+</head>
+<body>
+    <div class="overlay">
+        <form class="form-login" id="#" action="proses-login.php" method="POST">
+            <div class="judul">
+                <h2>WELCOME</h2>
+                <p>login here using your username and password</p>
+                <img src="assets/Proyek Baru.png" alt="" class="icon">
+            </div>
+            <div class="field-set">
+                <span class="input-item">
+                     <i class="fa fa-user-circle"></i>
+                </span>
+                   <input class="form-input" id="txt-input" type="text" placeholder="username" name="username" autocomplete="off" required>
+                <br>
+                <span class="input-item">
+                  <i class="fa fa-key"></i>
+                </span>
+                    <input class="form-input" type="password" placeholder="password" id="pwd"  name="password" required>
+               <span>
+                  <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+               </span>
+                <button type="submit" class="btn-ijo" name="login" value="login" > <b>LOGIN</b> </button>
+                <a href="" onClick="confirm_modal" data-bs-toggle="modal" data-bs-target="#ModalForget">Forget password?</a>
+             </div>
+        </form>
+    </div>
+
+    <!-- Modal Popup untuk Forget password-->
+    <div class="modal fade" id="ModalForget" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="send_email.php" method="POST">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Email Anda</label>
+                  <input type="email" name="email" class="form-control" >
+                  <p style="color: red; font-style: italic;">Note : Code akan di kirimkan melalui Email yang sudah terdaftar</p>
+                </div>
+            </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" name="submit_email">Selesai</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+    function show() {
+        var p = document.getElementById('pwd');
+        p.setAttribute('type', 'text');
+    }
+    function hide() {
+        var p = document.getElementById('pwd');
+        p.setAttribute('type', 'password');
+    }
+
+    var pwShown = 0;
+    document.getElementById("eye").addEventListener("click", function () {
+        if (pwShown == 0) {
+            pwShown = 1;
+            show();
+        } else {
+            pwShown = 0;
+            hide();
+        }
+    }, false);
+    </script>
+</body>
+</html>

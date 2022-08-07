@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #fff 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #f8f8f8 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Vibur', cursive;
+    font-family: 'Abel', sans-serif;
+    opacity: .95;
+}
+
+.form-login {
+    position: relative;
+    width: 450px;
+    min-height: 500px;
+    height: auto;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(225deg, #fff 50%, #E3FDF5 50%);
+}
+
+.judul {
+    position: relative;
+    left: 50px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.judul h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 2px grey;
+}
+
+.judul p {
+    font-size: 18px;
+    font-size: 18px;
+    padding-top: 7px;
+    letter-spacing: 1px;
+
+}
+
+.judul img {
+    width: 55px;
+}
+
+.field-set a {
+    margin-left: 135px;
+    color: black;
+
+}
+
+.input-item {
+    margin-left: 50px;
+    background: #dedede;
+    color: black;
+    padding: 14.5px 10px 15px 9px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+#eye {
+    background: #fff;
+    color: #333;
+    margin-left: 5px;
+    position: inherit;
+    z-index: 5;
+    cursor: pointer;
+}
+
+input[class="form-input"] {
+    width: 230px;
+    height: 50px;
+    margin-top: 2%;
+    padding: 15px;
+    font-size: 18px;
+    background: rgb(255, 255, 255);
+    font-family: 'Abel', sans-serif;
+    color: black;
+    outline: none;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.2s linear;
+}
+
+input[id="txt-input"] {
+    width: 260px;
+}
+
+input:focus {
+    transform: translateX(-2px);
+    border-radius: 5px;
+}
+
+.btn-ijo {
+    position: relative;
+    left: 50px;
+    color: #252537;
+    width: 300px;
+    height: 50px;
+    padding: 0 20px;
+    background: #0CECDD;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+}
+
+.btn-ijo:hover {
+    transform: translatey(3px);
+    box-shadow: none;
+}
+
+.btn-ijo:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+    0% {
+        transform: translateY(3px);
+    }
+
+    100% {
+        transform: translateY(5px);
+    }
+}

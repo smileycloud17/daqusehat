@@ -1,0 +1,1633 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --body-color: #fff;
+    --blue: #B5DEFF;
+    /* #FBF3E4 # */
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #383E56;
+    --cream: #DFD8CA;
+    --tulisan: #000;
+    --card: #fff;
+    --hovered: #5fb4fa;
+    --hovered2: #fff;
+    --hovered3: #5fb4fa;
+    --primary: #4edbaf;
+    --primaryhover: #3ab890;
+    --warning: #d4637f;
+    --warninghover: #cf5a78;
+    --bluehover: #87acca;
+    --submenu: #dff0ff;
+    --submenuhover: #b9d1e6;
+    --bennerlab: url(../assets/img/bannerlablight.png);
+    --bennerad: url(../assets/img/benneradmin.png);
+    --bennerrsp: url(../assets/img/bennerresepsio.png);
+    --bennerkia: url(../assets/img/benneribuanak.png);
+    --bennerpg: url(../assets/img/bennerpoliGIGI.png);
+    --bennerumm: url(../assets/img/bennerpoli.png);
+    --bennerfar: url(../assets/img/bannerfarmasi.png);
+    --clock: url(../assets/img/clock.png);
+    --card: #ffffff;
+    --angka: #548CFF;
+    --jam: #000;
+    --submitbtn: linear-gradient(135deg, #4ac29a, #bdfff3);
+    --pointercaret : #7FB5FF;
+    --loaderbackground: rgba(255, 255, 255, 0.95);
+
+    /* Transition */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--body-color);
+    transition: var(--tran-04);
+}
+
+body.dark {
+    --body-color: #041c32;
+    --blue: #3a5177;
+    --bluehover: #2b4063;
+    /* #FBF3E4 */
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #383E56;
+    --cream: #DFD8CA;
+    --tulisan: #fff;
+    --card: #34426a;
+    --hovered: #03506F;
+    --primary: #B5Deef;
+    --primaryhover: #5fb4f4;
+    --hovered2: #98f974;
+    --hovered3: #3ff974;
+    --submenu: #4d6791;
+    --submenuhover: #425b81;
+    --bennerlab: url(..//assets/img/bannerlabdark.png);
+    --bennerad: url(../assets/img/benneradmindark.png);
+    --bennerrsp: url(../assets/img/bennerresepsiodark.png);
+    --bennerkia: url(../assets/img/benneribuanakdark.png);
+    --bennerpg: url(../assets/img/bennerpoliGIGIdark.png);
+    --bennerumm: url(../assets/img/bennerpolidark.png);
+    --bennerfar: url(../assets/img/bannerfarmasidark.png);
+    --clock: url(../assets/img/clock\ 1.png);
+    --card: #22334e;
+    --angka: #98f974;
+    --jam: #fff;
+    --submitbtn: linear-gradient(135deg, #159957, #155799);
+    --pointercaret : #83BD75;
+    --loaderbackground: rgba(0, 0, 0, 0.94);
+}
+
+.contain {
+    position: relative;
+    width: 100%;
+}
+
+.navigasi {
+    position: fixed;
+    font-family: 'Inter', sans-serif;
+    width: 80px;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigasi.active {
+    width: 250px;
+}
+
+.navigasi ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigasi ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigasi ul li:hover,
+.navigasi ul li.hovered {
+    background: var(--body-color);
+}
+
+.navigasi ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigasi ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigasi ul li:hover a,
+.navigasi ul li.hovered a {
+    color: var(--white);
+}
+
+.navigasi ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigasi ul li a .icon i {
+    font-size: 1.75em;
+    color: var(--tulisan);
+}
+
+.navigasi ul li a .icon img {
+    margin-top: 10px;
+    margin-left: 5px;
+    height: 57px;
+}
+
+.navigasi ul li a .judul1 {
+    position: absolute;
+    display: inline;
+    padding: 0 70px;
+    height: 60px;
+    font-weight: 700;
+    line-height: 80px;
+    text-align: start;
+    white-space: nowrap;
+    color: var(--tulisan);
+}
+
+.navigasi ul li a .judul {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 55px;
+    text-align: start;
+    white-space: nowrap;
+    color: var(--tulisan);
+}
+
+/* pojokan luaran */
+.navigasi ul li:hover a::before,
+.navigasi ul li.hovered a::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--body-color);
+    pointer-events: none;
+}
+
+.navigasi ul li:hover a::after,
+.navigasi ul li.hovered a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--body-color);
+    pointer-events: none;
+}
+/* navigasi bawah switch */
+.navigasi .bottom-content {
+    position: relative;
+    top: 90%;
+}
+
+.navigasi .bottom-content .mode {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.bottom-content .mode .bulan-bintang {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    left: 20px;
+}
+
+.bottom-content .mode .bulan-bintang i {
+    position: absolute;
+    font-size: 1em;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.bottom-content .mode .bulan-bintang i.sun {
+    opacity: 0;
+}
+
+body.dark .bottom-content .mode .bulan-bintang i.sun {
+    opacity: 1;
+}
+
+body.dark .bottom-content .mode .bulan-bintang i.moon {
+    opacity: 0;
+}
+
+.bottom-content .mode .mode-text {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    text-align: start;
+    white-space: nowrap;
+    color: var(--tulisan);
+}
+
+.bottom-content .mode .toggle-switch {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    cursor: pointer;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--white);
+}
+
+.switch::before {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: var(--black2);
+    transition: var(--tran-03);
+}
+
+body.dark .switch::before {
+    left: 24px;
+}
+
+/* ISI */
+.main {
+    position: absolute;
+    width: calc(100% - 80px);
+    left: 85px;
+    min-height: 100vh;
+    transition: 0.5s;
+}
+
+.main.active {
+    width: calc(100% - 245px);
+    left: 250px;
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.kotak {
+    position: fixed;
+    z-index: 3;
+    background-color: var(--blue);
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--tran-03);
+}
+
+.bar {
+    font-size: 1.5em;
+    color: var(--tulisan);
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    padding-left: 13px;
+    padding-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-main {
+    position: relative;
+    top: 10px;
+    left: 60px;
+    font-weight: 500;
+    font-size: 1.45rem;
+    color: var(--tulisan);
+    letter-spacing: 0.5px;
+}
+
+.profile {
+    position: relative;
+    min-width: 40px;
+    height: 40px;
+    border: 50%;
+}
+
+.profile .info {
+    position: relative;
+    top: 5px;
+    right: 25px;
+}
+
+.profile p {
+    position: relative;
+    top: 11px;
+    color: var(--tulisan);
+    font-size: 13px;
+
+}
+
+.profile small {
+    position: relative;
+    top: 10px;
+
+    color: var(--tulisan);
+}
+
+.profile img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* TAMPILAN PADA INDEX BESERTA BANNER */
+
+.cardbox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+}
+
+.cardbox .card {
+    position: relative;
+    background: var(--bennerlab);
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.cardbox .cardmin {
+    position: relative;
+    background: var(--bennerad);
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.cardbox .cardrsp {
+    position: relative;
+    background: var(--bennerrsp);
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.cardbox .cardkia {
+    position: relative;
+    background: var(--bennerkia);
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.cardbox .cardpg {
+    position: relative;
+    background: var(--bennerpg);
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.cardbox .cardumm {
+    position: relative;
+    background: var(--bennerumm);
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.cardbox .cardfar {
+    position: relative;
+    background: var(--bennerfar);
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-align: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.cardbox2 {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+}
+
+.cardbox2 .card-1 {
+    position: relative;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    color: var(--tulisan);
+    transition: var(--tran-03)
+}
+
+.card-1 p {
+    text-align: justify;
+}
+
+/* Dashboard */
+
+.cardbox3 {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+.cardbox3 .card-2 {
+    position: relative;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    text-decoration: none;
+}
+
+.cardbox3 .card-2 .number {
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--angka);
+}
+
+.cardbox3 .card-2 .keterangan {
+    font-size: 1.1em;
+    margin-top: 5px;
+    color: var(--tulisan);
+}
+
+.cardbox3 .card-2 .iconCard {
+    font-size: 3.5em;
+    color: var(--tulisan);
+}
+
+.cardbox3 .card-2:hover {
+    background: var(--hovered);
+}
+
+.cardbox3 .card-2:hover .number,
+.cardbox3 .card-2:hover .keterangan,
+.cardbox3 .card-2:hover .iconCard {
+    color: var(--hovered2);
+}
+
+/* Data Dashboard */
+.dataDetail {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-gap: 30px;
+    /* margin-top: 10px; */
+}
+
+.dataDetail .pasien {
+    position: relative;
+    min-height: 250px;
+    background: var(--card);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    border-radius: 15px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.tabel-dashboard{
+    display: grid;
+}
+
+.dataDetail .headeer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.dataDetail .headeer h2 {
+    color: var(--tulisan);
+}
+
+.dataDetail .headeer .tombol {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--hovered);
+    text-decoration: none;
+    color: var(--tulisan);
+    border-radius: 6px;
+}
+
+.dataDetail table {
+    margin-top: 1rem;
+    border-collapse: collapse;
+    overflow: scroll;
+}
+
+.dataDetail table thead td {
+    padding: 10px;
+    font-weight: 600;
+}
+
+.dataDetail .pasien table tr {
+    color: var(--tulisan);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.dataDetail .pasien table tr th {
+    color: var(--tulisan);
+    text-align: left;
+    padding: 10px;
+}
+
+.dataDetail .pasien table tr td {
+    padding: 15px;
+}
+
+.dataDetail .pasien table tr:last-child {
+    border-bottom: none;
+}
+
+.dataDetail .pasien table th td:last-child {
+    text-align: end;
+}
+.dataDetail .pasien table tr td:last-child {
+    text-align: end;
+}
+
+/* Page Pasien */
+
+.cardbox4 {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+}
+
+.cardbox4 .card-3 {
+    position: relative;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    align-items: center;
+    justify-content: center;
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.card-3 .btnrr {
+    height: 60px;
+    width: 200px;
+    display: block;
+    background: linear-gradient(to right, #00b09b, #96c93d);
+    margin: 0 20px;
+    text-decoration: none;
+    color: var(--white);
+    line-height: 60px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border-radius: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+
+}
+
+.card-3 .btnrr i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.btnrr::before {
+    content: '';
+    position: absolute;
+    height: 90px;
+    width: 30px;
+    background: var(--card);
+    box-shadow: 0 0 10px var(--card);
+    filter: blur(1px);
+    opacity: 0.5;
+    margin-top: -30px;
+    transition: var(--tran-03);
+    transform: rotate(-20deg) translateX(-60px);
+    overflow: hidden;
+}
+
+.btnrr:hover::before {
+    transform: rotate(-20deg) translate(160px, 75px);
+}
+
+/* Profile Modal */
+
+.profilemenu {
+    border-radius: 10px;
+    background-color: var(--blue);
+}
+
+.profilemenu:hover {
+    background-color: var(--bluehover);
+}
+
+.profilemenu,
+.links {
+    padding: 12px;
+    font-size: 1em;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    outline: none;
+    width: 200px;
+    color: var(--tulisan);
+    transition: 0.3s;
+}
+
+.sub {
+    border-radius: 10px;
+    background-color: var(--submenu);
+    margin-top: 5px;
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+    z-index: 3;
+}
+
+.newsub {
+    transform: scaleY(1);
+}
+
+.links {
+    background-color: var(--submenu);
+}
+
+.links:hover {
+    background-color: var(--submenuhover);
+    transform: scaleX(1.1);
+}
+
+.sub2 {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.prof {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.links,
+i {
+    margin-right: 7px;
+}
+
+/* Clock Dashboard */
+
+.clock {
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    padding: 20px;
+    background: var(--card);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    border-radius: 20px;
+}
+
+.analog {
+    margin: auto;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: var(--clock);
+    background-size: cover;
+    border: 4px solid var(card);
+    border-radius: 50%;
+    box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+        inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+        0 15px 15px rgba(0, 0, 0, 0.3),
+        inset 0 15px 15px rgba(0, 0, 0, 0.3);
+}
+
+.analog::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--jam);
+    border-radius: 50%;
+    z-index: 10000;
+}
+
+.analog .jam,
+.analog .menit,
+.analog .detik {
+    position: absolute;
+}
+
+.analog .jam,
+.hr {
+    width: 160px;
+    height: 160px;
+}
+
+.analog .menit,
+.mn {
+    width: 190px;
+    height: 190px;
+}
+
+.analog .detik,
+.sc {
+    width: 230px;
+    height: 230px;
+}
+
+.hr,
+.mn,
+.sc {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: absolute;
+    border-radius: 50%;
+}
+
+.hr::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 80px;
+    background: var(--angka);
+    z-index: 10;
+    border-radius: 6px 6px 0 0;
+}
+
+.mn::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 90px;
+    background: var(--angka);
+    z-index: 11;
+    border-radius: 6px 6px 0 0;
+}
+
+.analog .date {
+    font-size: 20px;
+    color: var(--tulisan);
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.analog .date .dino {
+    position: relative;
+    left: 110px;
+    bottom: 60px;
+    text-shadow: 1px 1px 2px var(--hovered2);
+    z-index: inherit;
+}
+
+.analog .date .wulan {
+    position: relative;
+    left: 40px;
+    top: 50px;
+    text-shadow: 1px 1px 2px var(--hovered);
+}
+
+.analog .date .tanggal {
+    position: relative;
+    right: 110px;
+    text-shadow: 1px 1px 2px var(--hovered);
+}
+
+.analog .date .taun {
+    position: relative;
+    right: 5px;
+    text-shadow: 1px 1px 2px var(--hovered);
+}
+
+.sc::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background: red;
+    z-index: 12;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Teks Slide */
+.teks-slide {
+    position: relative;
+    display: flex;
+    left: 19px;
+    width: calc(100% - 40px);
+    padding: 25px;
+    background: var(--card);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+}
+
+.teks-slide marquee {
+    color: var(--tulisan);
+    font-weight: 600;
+}
+
+/* Form registrasi */
+.pendaftaran {
+    position: flex;
+    height: 100vh;
+    padding: 20px;
+}
+
+.registrasi {
+    position: relative;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    color: var(--tulisan);
+    transition: var(--tran-03)
+}
+
+.registrasi h2 {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.registrasi form .input-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .input-details .inputbox {
+    width: calc(100% / 2 - 20px);
+}
+
+.inputbox .btn-medicin
+{
+    color: #fff;
+    width: 13%;
+    height: 45px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--hovered);
+    font-size: 20px;
+    cursor: pointer;
+}
+.inputbox .btn-checkit
+{
+    color: #fff;
+    width: 13%;
+    height: 45px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--warning);
+    font-size: 20px;
+    cursor: pointer;
+}
+.inputbox .btn-checkit i
+{
+    margin-left: 5px;
+}
+.btn-medicin:hover
+{
+    background-color: var(--blue);
+}
+.btn-checkit:hover
+{
+    background-color: var(--warninghover);
+}
+
+
+/* Edit Profile */
+.edit {
+    position: flex;
+    height: 100vh;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profil {
+    position: relative;
+    padding: 100px 150px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 15px;
+    background: var(--card);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    color: var(--tulisan);
+    transition: var(--tran-03)
+}
+
+.user-profil h2 {
+    margin-bottom: 100px;
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.user-profil img {
+    position: relative;
+    top: -80px;
+    left: 580px;
+}
+
+.user-profil a {
+    position: relative;
+    top: -50px;
+    left: 470px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--tulisan);
+    border-bottom: 1px solid;
+}
+
+.user-profil form .inputan-profil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
+/* Form Data Pasien CSS */
+.pasiendt {
+    position: relative;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.pasiendt button {
+    position: absolute;
+    top: 35px;
+    left: 87%;
+    height: 25px;
+    width: 10%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: var(--hovered);
+    color: var(--tulisan);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    box-shadow: 0 7px 25px rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+.pasiendt button:hover {
+    background: var(--submitbtn);
+}
+
+.search {
+    position: relative;
+    display: block;
+}
+
+.search label {
+    position: inherit;
+    float: right;
+    margin-bottom: 1rem;
+}
+
+.search label input {
+    position: inherit;
+    width: 200px;
+    height: 30px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 16px;
+    color: var(--tulisan);
+    background: var(--card);
+    outline: none;
+    border-bottom-width: 2px;
+    border: 1px solid #ccc;
+    caret-color: var(--pointercaret);
+}
+
+.search label input:focus {
+    border-color: var(--hovered3);
+}
+
+.search i {
+    position: absolute;
+    top: 6px;
+    left: 11px;
+    color: var(--tulisan);
+    font-size: 1.2em;
+}
+
+/* Table Data Dokter, Pasien, User */
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, );
+}
+
+.content-table thead tr {
+    background-color: var(--hovered);
+    color: var(--tulisan);
+    text-align: left;
+    font-weight: 600;
+    border-radius: 50px;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid var(--tulisan);
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: var(--submenu);
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--hovered);
+}
+
+.content-table tbody tr.active_baris {
+    font-weight: bold;
+    color: var(--hovered3);
+}
+
+.pasiendt .tombol-tambah a {
+    background: var(--blue);
+    margin-top: 50px;
+    position: inherit;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    cursor: pointer;
+    color: var(--tulisan);
+    text-decoration: none;
+    border-radius: 50px;
+    padding: .3em .7em;
+    text-align: center
+}
+
+.pasiendt .tombol-tambah a:hover {
+    background: var(--bluehover);
+}
+
+/* Halaman Tambah Pasien Resepsionis */
+.form-pasien {
+    position: relative;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+
+.pasien-add {
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid var(--tulisan);
+}
+
+.pasien-add h2 {
+    display: inline;
+}
+
+.pasien-add small {
+    padding: 5px;
+}
+
+.tabel-pasien {
+    border-collapse: collapse;
+    margin: 10px;
+    font-size: 0.9em;
+    text-align: left;
+    height: 350px;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+}
+
+.tabel-pasien th input,
+.tabel-pasien th select {
+    height: 30px;
+    font-weight: 500;
+    padding-right: 5px;
+    width: 75%;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    float: left;
+    padding-left: 13px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    caret-color: var(--pointercaret);
+}
+
+.tabel-pasien th textarea {
+    height: 85px;
+    font-weight: 500;
+    padding-right: 5px;
+    padding-left: 13px;
+    width: 75%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    caret-color : var(--pointercaret);
+}
+
+.tabel-pasien th input:focus {
+    border-color: var(--hovered3);
+}
+
+.tabel-pasien th select:focus {
+    border-color: var(--hovered3);
+}
+
+.tabel-pasien th textarea:focus {
+    border-color: var(--hovered3);
+}
+
+.tabel-pasien th input #rt {
+    width: 200px;
+}
+
+.tabel-pasien th a {
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 90px;
+    color: var(--hovered3);
+}
+/* cek pasien resepsionis */
+.form-cekcek {
+    position: relative;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.09);
+    color: var(--tulisan);
+    transition: var(--tran-03);
+}
+.cek-add {
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid var(--tulisan)
+}
+.cek-add h2 {
+    display: inline;
+}
+.cek-add small {
+    padding: 5px;
+}
+.tabel-cek {
+    border-collapse: collapse;
+    margin: 10px;
+    font-size: 0.9em;
+    text-align: left;
+    height: 450px;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+}
+.tabel-cek th input,
+.tabel-cek th select {
+    height: 30px;
+    font-weight: 500;
+    padding-right: 5px;
+    padding-left: 12px;
+    width: 100%;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    caret-color: var(--hovered3);
+}
+.tabel-cek th button {
+    position: relative;
+    height: 30px;
+    width: 23%;
+    float: right;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    background: var(--blue);
+    color: var(--tulisan);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: var(--tran-03);
+}
+
+.tabel-cek th button:hover {
+    background: var(--bluehover);
+}
+
+.tabel-cek th input:focus {
+    border-color: var(--hovered3);
+}
+
+.tabel-cek th select:focus {
+    border-color: var(--hovered3);
+}
+
+/* Tabel Check REGIS LAB*/
+.cek-pasien {
+    position: sticky;
+    margin: 10px;
+    font-size: 0.9em;
+    text-align: left;
+    height: 100px;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+}
+
+.cek-pasien thead th input {
+    height: 30px;
+    font-weight: 500;
+    margin-left: 20px;
+    width: 55%;
+    outline: none;
+    border-radius: 13px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+}
+
+.cek-pasien thead th input:focus {
+    border-color: var(--hovered3);
+}
+
+.cek-pasien tbody td input {
+    outline: none;
+    width: 20%;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    padding-left: 7px;
+    font-size: 12px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+}
+
+
+.cek-pasien tbody td input:focus {
+    border-color: var(--hovered3);
+}
+/* footer */
+footer {
+    padding: 20px;
+}
+
+footer p {
+    color: var(--tulisan);
+    text-align: center;
+}
+
+.tabel-tambah-pasien {
+    border-collapse: collapse;
+    margin: 10px;
+    font-size: 0.9em;
+    text-align: left;
+    height: 450px;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+}
+
+.tabel-tambah-pasien th input,
+.tabel-tambah-pasien th select {
+    height: 30px;
+    font-weight: 500;
+    width: 75%;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    caret-color: var(--pointercaret);
+}
+
+.pembatas-no-rm{
+    font-weight: 500;
+    padding-right: 5px;
+    margin: auto 5px auto 1px;
+    width: 1%;
+    float: left;
+    font-size: 20px;
+}
+
+.info-no-rm{
+    font-weight: lighter;
+    padding-right: 5px;
+    margin: 5px 10px;
+    float: left;
+    font-size: 11px;
+    color: red;
+}
+
+.tabel-tambah-pasien th textarea {
+    height: 85px;
+    font-weight: 500;
+    padding-right: 5px;
+    padding-left: 13px;
+    width: 75%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    caret-color : var(--pointercaret);
+}
+
+.tabel-tambah-pasien th input:focus {
+    border-color: var(--hovered3);
+}
+
+.tabel-tambah-pasien th select:focus {
+    border-color: var(--hovered3);
+}
+
+.tabel-tambah-pasien th textarea:focus {
+    border-color: var(--hovered3);
+}
+
+.tabel-tambah-pasien th input #rt {
+    width: 200px;
+}
+
+.tabel-tambah-pasien th a {
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 90px;
+    color: var(--hovered3);
+}
+
+/* loading  site */
+.spinner {
+    width: 72px;
+    height: 72px;
+    display: grid;
+    border: 5.8px solid #0000;
+    border-radius: 50%;
+    border-right-color: var(--hovered3);
+    animation: spinner-a4dj62 1.2s infinite linear;
+    margin-top: 20%;
+    margin-left: 50%;
+ }
+ 
+ .spinner::before,
+ .spinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2.9px;
+    border: inherit;
+    border-radius: 50%;
+    animation: spinner-a4dj62 2.4s infinite;
+ }
+ 
+ .spinner::after {
+    margin: 11.6px;
+    animation-duration: 3.5999999999999996s;
+ }
+ 
+ @keyframes spinner-a4dj62 {
+    100% {
+       transform: rotate(1turn);
+    }
+ }
+
+ .overlayer
+ {
+    z-index: 9999999;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--loaderbackground);
+    align-items: center;
+ }
+
+ /* btn-pelayanan */
+ .pasien .btn-pelayanan 
+ {
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+ }
+ .pasien .belum
+ {
+    font-style: italic;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #E5707E;
+ }
+ .pasien .belum:hover
+ {
+    font-style: italic;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #F38BA0;
+ }
+ .pasien .sudah
+ {
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+    background-color: #B5CDA3;
+    cursor: default;
+ }
+
+ /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* responsive site  */
+
+@media (max-width: 1350px)  {
+    
+}
+@media (max-width: 1300px)  {
+    
+}
+@media (max-width: 1200px)  {
+    
+}
+@media (max-width: 1085px)  {
+    
+}
+@media (max-width: 1005px)  {
+    
+}
+@media (max-width: 922px)  {
+    
+}
+@media (max-width: 767px)  {
+
+}
+
