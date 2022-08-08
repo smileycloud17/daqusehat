@@ -1,0 +1,30 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/u1648364/public_html/
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp auth.php $DEPLOYPATH
+    - /bin/cp authuser.php $DEPLOYPATH
+    - /bin/cp coba.html $DEPLOYPATH
+    - /bin/cp cobanorm.php $DEPLOYPATH
+    - /bin/cp configuser.php $DEPLOYPATH
+    - /bin/cp koneksi.php $DEPLOYPATH
+    - /bin/cp logout.php $DEPLOYPATH
+    - /bin/cp proses-login.php $DEPLOYPATH
+    - /bin/cp reset_pass.php $DEPLOYPATH
+    - /bin/cp send_email.php $DEPLOYPATH
+    - /bin/cp -R admin $DEPLOYPATH
+    - /bin/cp -R assets $DEPLOYPATH
+    - /bin/cp -R bootstrap $DEPLOYPATH
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R DB $DEPLOYPATH
+    - /bin/cp -R dompdf $DEPLOYPATH
+    - /bin/cp -R farmasi $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
+    - /bin/cp -R kia $DEPLOYPATH
+    - /bin/cp -R laboratorium $DEPLOYPATH
+    - /bin/cp -R phpmail $DEPLOYPATH
+    - /bin/cp -R poligigi $DEPLOYPATH
+    - /bin/cp -R poliumum $DEPLOYPATH
+    - /bin/cp -R resepsionis $DEPLOYPATH
