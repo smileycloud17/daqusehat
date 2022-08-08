@@ -3,7 +3,7 @@ session_start();
     if($_SESSION["keterangan"] == "Admin") {
         header("Location: admin/admin.php");
     } else if($_SESSION["keterangan"] == "Resepsionis") {
-        header("Location: index.php");
+        header("Location: resepsionis/index.php");
     } else if($_SESSION["keterangan"] == "Laboratorium") {
         header("Location: laboratorium/lab.php");
     } else if($_SESSION["keterangan"] == "Farmasi") {
@@ -15,6 +15,6 @@ session_start();
     } else if($_SESSION["keterangan"] == "dokter") {
         header("Location: poliumum/poliumum.php");
     } else if(!isset($_SESSION["nama_pengguna"])) {
-        header("Location: login.html");
+        header("Location: index.html");
     }
 ?>

@@ -28,7 +28,7 @@
                 $_SESSION['nama_pengguna'] = $row['nama_pengguna'];
                 $_SESSION['keterangan'] = $row['keterangan'];
                 $_SESSION['login'] = true;
-                header('location:index.php');
+                header('location:resepsionis/index.php');
             } else if ($row['keterangan']=="Laboratorium") {
                 session_start();
                 $_SESSION['kta'] = $row['kta'];
