@@ -200,7 +200,7 @@ require_once("../authuser.php");
             </form>     
             <?php 
                 }
-                ?>                                                      
+                ?>
         </div>
         <footer>
             <p>&copy 2022 Klinik Daqu Sehat Malang</p>

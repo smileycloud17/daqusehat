@@ -167,7 +167,7 @@ require_once("../authuser.php");
                             <!-- <button  class="cekrm" type="submit">check</button></th> -->
                             <th align="center">Tanggal Masuk</th>
                             <input type="text" name="tanggal_masuk" id="tglmasuk" value="<?php echo date("Y-m-d") ?>" hidden>
-                            <th><input type="text" name="tanggal_masuk-tampil" id="tglmasuk-tampil" value="<?php echo date("d-m-Y") ?>" readonly></th>
+                            <th><input type="text" name="tanggal_masuk-tampil" id="tglmasuk-tampil" value="<?php echo date("dmY") ?>" readonly></th>
                         </tr>
                         <tr>
                             <th>Nama Lengkap</th>

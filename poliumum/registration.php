@@ -1,5 +1,7 @@
 <?php require_once("../auth.php"); 
 
+$no_reg = $_GET['no_reg'];
+
 include '../koneksi.php';
 
 $keterangan = $_SESSION["keterangan"];
@@ -28,7 +30,7 @@ $urutan = (int) substr($noreg, 4, 4);
 
 $urutan++;
  
-$huruf = "PLMM";
+$huruf = "PU";
 $noreg = $huruf . sprintf("%04s", $urutan);
 ?>
 <!DOCTYPE html>
@@ -148,7 +150,66 @@ $noreg = $huruf . sprintf("%04s", $urutan);
         <!-- Form Registration  -->
         <div class="pendaftaran">
             <div class="registrasi">
+                <?php 
+                    $data_pemeriksaan = mysqli_query($koneksi,"select * from tb_cek_pasien where no_reg='$no_reg'");
+                    $nomor = 1;
+                    while($dp = mysqli_fetch_array($data_pemeriksaan)){
+                ?>
+                <form>
+                <h2>Hasil Cek</h2>
+                    <div class="input-details">
+                        <div class="inputbox">
+                            <span class="detil">No.Register</span>
+                             <h3><?= $dp['no_reg']; ?></h3>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">No.RM</span>
+                             <h3><?= $dp['no_rm']; ?></h3>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Nama Pasien</span>
+                             <h3><?= $dp['nama_lengkap']; ?></h3>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Berat Badan</span>
+                             <h3><?= $dp['berat_badan']; ?></h3>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Suhu Badan</span>
+                             <h3><?= $dp['suhu_badan']; ?></h3>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Tinggi Badan</span>
+                             <h3><?= $dp['tinggi_badan']; ?></h3>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Golongan Darah</span>
+                             <h3><?= $dp['gol_darah']; ?></h3>
+                        </div>
+                    </div>
+                    <h2 style="margin-top: 50px;">Tekanan Darah</h2>
+                    <div class="input-details">
+                        <div class="inputbox">
+                            <span class="detil">Sistole</span>
+                             <h3><?= $dp['sistole']; ?></h3>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Diastole</span>
+                             <h3><?= $dp['diastole']; ?></h3>
+                        </div>
+                    </div>
+                </form>
+                <?php 
+                    }
+                ?>
+            </div>
+            <div class="registrasi">
                 <h2>Data Pemeriksaan</h2>
+                <?php 
+                    $data = mysqli_query($koneksi,"select * from tb_pemeriksaan_poliumum where no_reg='$no_reg'");
+                    $nomor = 1;
+                    while($d = mysqli_fetch_array($data)){
+                ?>
                 <form action="proses_tambah_data_umum.php" method="POST">
                     <div class="floating-btn">
                         <button class="primary">Submit and Print</button>
@@ -157,7 +218,7 @@ $noreg = $huruf . sprintf("%04s", $urutan);
                     <div class="input-details">
                         <div class="checkrm">
                             <span class="detil">No.RM</span>
-                            <th><input class="forminput" type="text" onkeyup="isi_otomatis()" name="no_rm" id="noRm" placeholder="No RM" autocomplete="off">
+                            <th><input class="forminput" type="text" name="no_rm" id="noRm" placeholder="No RM" value="<?= $d['no_rm']; ?>" autocomplete="off">
                         </div>
                         <div class="inputbox">
                             <span class="detil">No.Register</span>
@@ -165,23 +226,23 @@ $noreg = $huruf . sprintf("%04s", $urutan);
                         </div>
                         <div class="inputbox">
                             <span class="detil">Tanggal Masuk</span>
-                            <input class="forminput" type="date" id="indate" name="indate" required>
+                            <input class="forminput" type="date" id="indate" value="<?php echo $d['tgl_masuk'] ?>"  name="indate" required>
                         </div>
                         <div class="inputbox">
                             <span class="detil">Nama Pasien</span>
-                            <input class="forminput" type="text" id="namalngkp" name="namalngkp" required>
+                            <input class="forminput" type="text" id="namalngkp" value="<?php echo $d['nama_pasien'] ?>" name="namalngkp" required>
                         </div>
                         <div class="inputbox">
                             <span class="detil">Jenis Layanan</span>
-                            <input class="forminput" type="text" id="no_bpjs" name="no_bpjs" readonly>
+                            <input class="forminput" type="text" id="jenis_pelayanan" name="jenis_pelayanan" value="<?php echo $d['jenis_layanan']; ?>" readonly>
                         </div>
                         <div class="inputbox">
                             <span class="detil">Jenis Kelamin</span>
                             <select name="jenis_kelamin" id="sex">
                                 <option value="">--Jenis Kelamin--</option>
-                                <option value="Laki-laki">Laki - Laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                                <option value="-">Tidak Disebutkan</option>
+                                <option value="Laki-laki" <?php echo $d['jenis_kelamin'] == 'Laki-laki' ? 'selected="selected"' : '' ?> >Laki-laki</option>
+                                <option value="Perempuan" <?php echo $d['jenis_kelamin'] == 'Perempuan' ? 'selected="selected"' : '' ?> >Perempuan</option>
+                                <option value="-" <?php echo $d['jenis_kelamin'] == '-' ? 'selected="selected"' : '' ?> >Tidak disebutkan</option>
                             </select>
                         </div>
                         <div class="inputbox">
@@ -198,7 +259,7 @@ $noreg = $huruf . sprintf("%04s", $urutan);
                             <textarea name="keluhan" id="keluhan" cols="30" rows="5" required></textarea>
                         </div>
                     </div>
-                    <h2>Data Pemeriksaan</h2>
+                    <h2 style="margin-top: 50px;">Terapi Dan Obat</h2>
                     <div class="input-details" id="form-obat">
                         <div class="inputbox">
                             <span class="detil">Terapi/Obat</span>
@@ -215,6 +276,9 @@ $noreg = $huruf . sprintf("%04s", $urutan);
                             <button class="btn-medicin">+</button>
                         </div> -->
                     </div>
+                <?php 
+                    }
+                ?>
             </div>
         </form>
         <footer style="margin-top: 60px">
@@ -235,9 +299,25 @@ $noreg = $huruf . sprintf("%04s", $urutan);
             var html = '<div class="inputbox"><span class="detil">Terapi/Obat</span><input class="forminput obat" type="text" id="obat" name="obat" style="width: 65%" required><input class="forminput" type="text" style="width: 20%; margin-left: 4px"><input type="button" value="x" class="btn-checkit" style="margin-left: 4px" id="remove"></div>';
 
             var x = 1;
+            $(document).ready(function() {
+                $( ".obat" ).autocomplete({
+                serviceUrl: "autocomplete_obat.php",   
+                dataType: "JSON",          
+                onSelect: function (suggestion) {
+                    $( this ).val(suggestion.nama);
+                }
+            });
+            });
 
             $("#add").click(function(){
                 $("#form-obat").append(html);
+                $( ".obat" ).autocomplete({
+                    serviceUrl: "autocomplete_obat.php",   
+                    dataType: "JSON",          
+                    onSelect: function (suggestion) {
+                        $( this ).val(suggestion.nama);
+                    }
+                });
             });
             
             $("#form-obat").on('click','#remove',function(){
@@ -246,7 +326,7 @@ $noreg = $huruf . sprintf("%04s", $urutan);
 
         });
     </script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function() {
             $( ".obat" ).autocomplete({
             serviceUrl: "autocomplete_obat.php",   
@@ -256,7 +336,7 @@ $noreg = $huruf . sprintf("%04s", $urutan);
             }
         });
         })
-    </script>
+    </script> -->
         <script type="text/javascript">
             
             function isi_otomatis(){

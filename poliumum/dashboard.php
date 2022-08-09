@@ -119,7 +119,7 @@ $keterangan = $_SESSION["keterangan"];
                                         echo $_SESSION['keterangan']; ?></small>
                         </div>
                         <a href="editprofile"><button class="links sub1"><i class="fas fa-user-alt"></i>Edit Profile</button></a>
-                        <a href="../logout"><button class="links sub2"><i class="fas fa-sign-out-alt"></i>Logout</button></a>
+                        <a href="../logout.php"><button class="links sub2"><i class="fas fa-sign-out-alt"></i>Logout</button></a>
                     </div>
                 </div>
             </div>
@@ -184,98 +184,6 @@ $keterangan = $_SESSION["keterangan"];
                                 <td>5/27/22</td>
                                 <td><a href="registration" class="btn-pelayanan belum">Belumdilayani</a></td>
                             </tr> -->
-                            <!-- <tr>
-                                <td>2</td>
-                                <td>PLM0002</td>
-                                <td>00-02-00</td>
-                                <td>Said Azka Zakaria</td>
-                                <td>95</td>
-                                <td>100</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>5/28/22</td>
-                                <td><a href="#" class="btn-pelayanan sudah">Sudahdilayani</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>PLM0003</td>
-                                <td>00-03-00</td>
-                                <td>Mayumi Datsun Go</td>
-                                <td>96</td>
-                                <td>120</td>
-                                <td>45</td>
-                                <td>45</td>
-                                <td>45</td>
-                                <td>5/27/22</td>
-                                <td><a href="registration" class="btn-pelayanan belum">Belumdilayani</a></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>PLM0004</td>
-                                <td>00-04-00</td>
-                                <td>Rocky Aditya</td>
-                                <td>100</td>
-                                <td>123</td>
-                                <td>60</td>
-                                <td>60</td>
-                                <td>60</td>
-                                <td>5/27/22</td>
-                                <td><a href="registration" class="btn-pelayanan belum">Belumdilayani</a></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>PLM0005</td>
-                                <td>00-05-00</td>
-                                <td>Juned Al Qodri</td>
-                                <td>98</td>
-                                <td>105</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>5/27/22</td>
-                                <td><a href="registration" class="btn-pelayanan belum">Belumdilayani</a></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>PLM0006</td>
-                                <td>00-06-00</td>
-                                <td>Ananda Glinka Putri</td>
-                                <td>98</td>
-                                <td>102</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>65</td>
-                                <td>5/28/22</td>
-                                <td><a href="#" class="btn-pelayanan sudah">Sudahdilayani</a></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>PLM0007</td>
-                                <td>00-07-00</td>
-                                <td>Putri Arista Milenia</td>
-                                <td>96</td>
-                                <td>120</td>
-                                <td>45</td>
-                                <td>45</td>
-                                <td>45</td>
-                                <td>5/28/22</td>
-                                <td><a href="#" class="btn-pelayanan sudah">Sudahdilayani</a></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>PLM0008</td>
-                                <td>00-08-00</td>
-                                <td>Kirara Milenia</td>
-                                <td>89</td>
-                                <td>107</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>50</td>
-                                <td>5/28/22</td>
-                                <td><a href="#" class="btn-pelayanan sudah">Sudahdilayani</a></td>
-                            </tr>
-                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -337,7 +245,7 @@ $keterangan = $_SESSION["keterangan"];
                         if(this['status_pelayanan'] == "Belum Dilayani"){
                             var statusPelayanan = "btn-pelayanan";
                             var status = " belum";
-                            var linkTo = "registration?id="+this['id'];
+                            var linkTo = "registration?no_reg="+this['no_reg'];
                             var visible = "";
                         } else if(this['status_pelayanan'] == "Sudah Dilayani"){
                             var statusPelayanan = "btn-pelayanan";

@@ -1,6 +1,7 @@
 <?php
 include "../koneksi.php";
 $perawatan = $_POST['perawatan'];
+$jenis_kelamin = $_POST['jenis_kelamin'];
 $no_rm1 = $_POST['no_rm1'];
 $no_rm2 = $_POST['no_rm2'];
 $no_rm3 = $_POST['no_rm3'];
@@ -24,15 +25,27 @@ if(is_null($data_no_reg)){
 }else{
     $no_reg_terakhir = $data_no_reg['no_reg'];
 }
-
-
 $no_reg_baru = sprintf("%02d",$no_reg_terakhir+1);
+
+//Kode Otomatis register
+$query = mysqli_query($koneksi, "SELECT max(no_reg) as RegTerbesar FROM tb_reg_umum");
+$data = mysqli_fetch_array($query);
+$noreg = $data['RegTerbesar'];
+
+$urutan = (int) substr($noreg, 4, 4);
+
+$urutan++;
+ 
+$huruf = "PM";
+$noreg = $huruf . sprintf("%04s", $urutan);
+
+
 
 $simpan = mysqli_query($koneksi,"INSERT INTO tb_cek_pasien (id,perawatan,no_reg,no_rm,nama_lengkap,tanggal_masuk,layanan,poli,berat_badan,suhu_badan,tinggi_badan,gol_darah,sistole,diastole) 
 VALUES ('','$perawatan','$no_reg_baru','$no_rm','$nama_lengkap','$tanggal_masuk','$layanan','$poli','$berat_badan','$suhu_badan','$tinggi_badan','$gol_darah','$sistole','$diastole')");
 
-$tambah_poliumum = mysqli_query($koneksi, "INSERT INTO tb_pemeriksaan_poliumum (id,no_reg,no_rm,tgl_masuk,nama_pasien,jenis_layanan,status_pelayanan)
-VALUES ('','$no_reg_baru', '$no_rm', '$tanggal_masuk','$nama_lengkap', '$layanan','Belum Dilayani')");
+$tambah_poliumum = mysqli_query($koneksi, "INSERT INTO tb_pemeriksaan_poliumum (id,no_reg,no_rm,tgl_masuk,nama_pasien,jenis_layanan,jenis_kelamin,status_pelayanan)
+VALUES ('','$no_reg_baru', '$no_rm', '$tanggal_masuk','$nama_lengkap', '$layanan','$jenis_kelamin','Belum Dilayani')");
  
 if ($simpan and $tambah_poliumum) {
     echo "
