@@ -27,6 +27,22 @@ $data = mysqli_query($koneksi,"select * from tb_pasien_resepsionis");
 $totaldata = mysqli_num_rows($data);
 
 $halaman = ceil($totaldata/$perPage);
+
+$halamanaktif = $_GET["halaman"];
+
+$jumlahlink = 3;
+
+if($page > $jumlahlink){
+    $start_number = $halamanaktif - $jumlahlink;
+} else {
+    $start_number = 1;
+}
+
+if($page < $halaman - $jumlahlink){
+    $end_number = $halamanaktif - $jumlahlink;
+} else{
+    $end_number = $halaman;
+}
 ?>
 
 <!DOCTYPE html>
@@ -241,7 +257,7 @@ $halaman = ceil($totaldata/$perPage);
                             </a>
                         </li>
                         <?php } ?>
-                        <?php for($i=1; $i<=$halaman; $i++){ ?>
+                        <?php for($i=$start_number; $i<=$end_number; $i++){ ?>
                         <li class="page-item"><a class="page-link" href="?halaman=<?php echo $i ?>"><?php echo $i ?></a></li>
                         <?php } ?>
                         <?php if($page == $halaman){ ?>
