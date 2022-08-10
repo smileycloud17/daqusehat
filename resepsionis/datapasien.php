@@ -186,7 +186,7 @@ if($page < $halaman - $jumlahlink){
                         <h2>Data Pasien</h2><br>
                         <div class="search">
                             <label>
-                                <input type="text" placeholder="Search" name="cari" autofocus>
+                                <input type="text" placeholder="Search" name="cari" autofocus autocomplete="off">
                                 <a><i class='fas fa-search'></i></a>
                                 <input type="submit" value="" name="tombol-cari" hidden>
                             </label>
@@ -219,7 +219,7 @@ if($page < $halaman - $jumlahlink){
                                     while($d = mysqli_fetch_array($dataresepsionis_limit)){
                                 ?>
                                 <tr>
-                                    <td><?php echo $d['id'] ?></td>
+                                    <td><?php echo $no ?></td>
                                     <td><?php echo $d['no_rm'] ?></td>
                                     <td><?php echo $d['no_bpjs'] ?></td>
                                     <td><?php echo $d['nik']?></td>
@@ -282,7 +282,7 @@ if($page < $halaman - $jumlahlink){
                 </div>
             </div>
             <footer>
-                <p>&copy 2022 Smiley Cloud Team ッ</p>
+                <p>Copyright © 2022, Powered by Smiley Cloud ッ All rights reserved.</p>
             </footer>
         </div>
         <!-- Modal Popup untuk delete-->

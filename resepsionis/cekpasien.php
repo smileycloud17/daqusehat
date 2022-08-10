@@ -167,7 +167,7 @@ require_once("../authuser.php");
                             <!-- <button  class="cekrm" type="submit">check</button></th> -->
                             <th align="center">Tanggal Masuk</th>
                             <input type="text" name="tanggal_masuk" id="tglmasuk" value="<?php echo date("Y-m-d") ?>" hidden>
-                            <th><input type="text" name="tanggal_masuk-tampil" id="tglmasuk-tampil" value="<?php echo date("dmY") ?>" readonly></th>
+                            <th><input type="text" name="tanggal_masuk-tampil" id="tglmasuk-tampil" value="<?php echo date("d-m-Y") ?>" readonly></th>
                         </tr>
                         <tr>
                             <th>Nama Lengkap</th>
@@ -232,7 +232,7 @@ require_once("../authuser.php");
             </form>                                                             
         </div>
         <footer>
-            <p>&copy 2022 Smiley Cloud Team ッ</p>
+            <p>Copyright © 2022, Powered by Smiley Cloud ッ All rights reserved.</p>
         </footer>
     </div>            
 

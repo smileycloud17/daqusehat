@@ -2,6 +2,10 @@
 require_once("../auth.php"); 
 $keterangan = $_SESSION["keterangan"];
     require_once("../authuser.php");
+include'../koneksi.php';
+
+    $datapasien = mysqli_query($koneksi,'SELECT * FROM tb_pasien_resepsionis');
+    $totalpasien = mysqli_num_rows($datapasien);
 ?>
 <!DOCTYPE html>
 
@@ -144,7 +148,7 @@ $keterangan = $_SESSION["keterangan"];
             </div>
             <div class="card-2">
                 <div>
-                    <div class="number">150</div>
+                    <div class="number"><?php echo $totalpasien; ?></div>
                     <div class="keterangan">Total Pasien</div>
                 </div>
                 <div class="iconCard">
