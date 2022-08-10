@@ -201,7 +201,9 @@ require_once("../authuser.php");
                 </form>
             </div>
         </div>
-
+        <footer style="margin-top: 50px;">
+            <p>&copy 2022 Smiley Cloud Team ッ</p>
+        </footer>
     </div>
 
     <script src="../js/script.js"></script>

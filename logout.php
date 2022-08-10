@@ -4,7 +4,7 @@
     echo "
         <script>
             alert('Anda Telah Logout, Tetap Semangat Sehat Selalu');
-            window.location = 'login.html';
+            window.location = 'index.html';
         </script>
     ";
 ?>

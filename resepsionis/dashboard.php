@@ -220,7 +220,7 @@ $keterangan = $_SESSION["keterangan"];
           <marquee behavior="" direction="" style="color: red;"> PERINGATAN !!!  Selalu Displin dan Mematuhi Protokol Kesehatan Dalam Pencegahan Covid-19 Patuhi 5M </marquee>
         </div>
         <footer>
-            <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+            <p>&copy 2022 Smiley Cloud Team ッ</p>
         </footer>
     </div>
 

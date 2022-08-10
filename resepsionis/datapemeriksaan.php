@@ -262,7 +262,7 @@ $halaman = ceil($totaldata/$perPage);
                 </div>
             </div>
             <footer>
-                <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+                <p>&copy 2022 Smiley Cloud Team ッ</p>
             </footer>
         </div>
         <!-- Modal Popup untuk delete-->

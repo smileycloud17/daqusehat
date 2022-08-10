@@ -4,23 +4,26 @@ $keterangan = $_SESSION["keterangan"];
 include '../koneksi.php';
 $tabel = mysqli_query($koneksi,"SELECT * FROM tb_pasien_resepsionis JOIN master_agama on tb_pasien_resepsionis.agama = master_agama.id_agama ORDER BY id asc");
 require_once("../authuser.php");
+// session_start();
+error_reporting(0);
 
 // Search
 if(isset($_POST['tombol-cari'])){
     $cari = $_POST['cari'];
+    $_SESSION['cari'] = $cari;
 }else{
-    $cari = '';
+    $cari = $_SESSION['cari'];
 }
 
 // $dataresepsionis_limit = mysqli_query($koneksi,"SELECT * FROM tb_resepsionis WHERE no_rm LIKE '%$cari%' OR nama_pasien LIKE '%$cari%'");
 
 // pagination
-$perPage = 5; //isi data perhalaman
+$perPage = 50; //isi data perhalaman
 $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
 $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
 
-$dataresepsionis = "SELECT * FROM tb_pasien_resepsionis JOIN master_agama on tb_pasien_resepsionis.agama = master_agama.id_agama WHERE tb_pasien_resepsionis.no_rm LIKE '%$cari%' OR tb_pasien_resepsionis.nama_pasien LIKE '%$cari%' OR tb_pasien_resepsionis.nik LIKE '%$cari%' ORDER BY id asc LIMIT $start, $perPage";
+$dataresepsionis = "SELECT * FROM tb_pasien_resepsionis WHERE no_rm LIKE '%$cari%' OR nama_pasien LIKE '%$cari%' OR  nik LIKE '%$cari%' ORDER BY id asc LIMIT $start, $perPage";
 $dataresepsionis_limit = mysqli_query($koneksi, $dataresepsionis);
 
 $data = mysqli_query($koneksi,"select * from tb_pasien_resepsionis");
@@ -28,18 +31,17 @@ $totaldata = mysqli_num_rows($data);
 
 $halaman = ceil($totaldata/$perPage);
 
-$halamanaktif = $_GET["halaman"];
 
 $jumlahlink = 3;
 
 if($page > $jumlahlink){
-    $start_number = $halamanaktif - $jumlahlink;
+    $start_number = $page - $jumlahlink;
 } else {
     $start_number = 1;
 }
 
 if($page < $halaman - $jumlahlink){
-    $end_number = $halamanaktif - $jumlahlink;
+    $end_number = $page + $jumlahlink;
 } else{
     $end_number = $halaman;
 }
@@ -227,7 +229,7 @@ if($page < $halaman - $jumlahlink){
                                     <td><?php echo $d['no_telp'] ?></td>
                                     <td><?php echo $d['alamat'] ?></td>
                                     <td><?php echo $d['domisili'] ?></td>
-                                    <td><?php echo $d['nama_agama'] ?></td>
+                                    <td><?php echo $d['agama'] ?></td>
                                     <td>
                                         <a href="editpasien.php?no_rm=<?php echo $d['no_rm'] ?>"><i class='far fa-edit' style="color:#4FBDBA"></i></a>
                                         <a href="" onClick="confirm_modal('proses_hapus_pasien.php?no_rm=<?php echo $d['no_rm'] ?>')" data-bs-toggle="modal" data-bs-target="#ModalDelete"><i class='fas fa-trash-alt' style="color:red"></i></a>
@@ -280,7 +282,7 @@ if($page < $halaman - $jumlahlink){
                 </div>
             </div>
             <footer>
-                <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+                <p>&copy 2022 Smiley Cloud Team ッ</p>
             </footer>
         </div>
         <!-- Modal Popup untuk delete-->

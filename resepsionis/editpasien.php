@@ -152,12 +152,12 @@ require_once("../authuser.php");
                     <?php 
                         $data = mysqli_query($koneksi,"select * from tb_pasien_resepsionis where no_rm='$no_rm'");
                         $nomor = 1;
-                        while($d = mysqli_fetch_array($data)){
+                        $d = mysqli_fetch_array($data)
                         ?>
                         <tr>
                             <th>No RM</th>
                             <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                            <th><input type="text" name="no_rm" id="noRm" value="<?php echo $d['no_rm']?>" disabled></th>
+                            <th><input type="text" name="no_rm" id="noRm" value="<?php echo $d['no_rm']?>" readonly></th>
                             <th align="center">Jenis Kelamin</th>
                             <th><select name="jenis_kelamin" id="sex">
                                 <option value="">--Jenis Kelamin--</option>
@@ -198,12 +198,9 @@ require_once("../authuser.php");
                         <button class="warning" href="">Bersihkan</button>
                 </div>
             </form>     
-            <?php 
-                }
-                ?>
         </div>
         <footer>
-            <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+            <p>&copy 2022 Smiley Cloud Team ッ</p>
         </footer>
     </div>
                 

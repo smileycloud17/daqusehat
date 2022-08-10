@@ -284,20 +284,20 @@ $noidlanjut = $urutanid;
                             <th align="center">Agama</th>
                             <th><select name="agama" id="religi" required>
                                 <option value="1">--Pilih--</option>
-                                <?php 
+                                <!-- <?php 
                                 $agama = mysqli_query($koneksi,"SELECT * FROM master_agama ORDER BY id_agama");
                                 while($data_agama = mysqli_fetch_array($agama)){
                                     ?>
                                     <option value="<?php echo $data_agama['id_agama']; ?>"><?php echo $data_agama['nama_agama']; ?></option>
                                     <?php 
                                 }
-                                ?>
-                                <!-- <option value="1">Islam</option>
-                                <option value="2">Kristen</option>
-                                <option value="3">Katholik</option>
-                                <option value="4">Hindu</option>
-                                <option value="5">Budha</option>
-                                <option value="6">Kong Hu Cu</option> -->
+                                ?> -->
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Katholik">Katholik</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Budha">Budha</option>
+                                <option value="Kong Hu Cu">Kong Hu Cu</option>
                             </select></th>
                         </tr>
                         <tr>
@@ -316,7 +316,7 @@ $noidlanjut = $urutanid;
             </form>                                                             
         </div>
         <footer>
-            <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+            <p>&copy 2022 Smiley Cloud Team ッ</p>
         </footer>
     </div>
                 
