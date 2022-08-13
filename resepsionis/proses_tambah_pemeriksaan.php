@@ -20,13 +20,6 @@ $diastole = $_POST['diastole'];
 $no_reg = mysqli_query ($koneksi,"SELECT * FROM tb_pemeriksaan_poliumum ORDER BY id DESC LIMIT 1");
 $data_no_reg = mysqli_fetch_array($no_reg);
 
-// if(is_null($data_no_reg)){
-//     $no_reg_terakhir = 0;
-// }else{
-//     $no_reg_terakhir = $data_no_reg['no_reg'];
-// }
-// $no_reg_baru = sprintf("%02d",$no_reg_terakhir+1);
-
 //Kode Otomatis register Poli Umum
 $query = mysqli_query($koneksi, "SELECT max(MID(no_reg,3,3)) as RegTerbesar FROM tb_pemeriksaan_poliumum");
 $data = mysqli_fetch_array($query);
