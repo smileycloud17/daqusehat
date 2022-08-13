@@ -187,8 +187,8 @@ require_once("authuser.php");
                 </form>
             </div>
         </div>
-        <footer>
-                <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+        <footer style="margin-top: 50px;">
+            <p>Copyright © 2022, Powered by Smiley Cloud ッ All rights reserved.</p>
         </footer>
 
     </div>

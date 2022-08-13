@@ -14,7 +14,7 @@ session_start();
         header("Location: ./poligigi/poligigi.php");
     } else if($_SESSION["keterangan"] == "dokter") {
         header("Location: ./poliumum/poliumum.php");
-    } else if(!isset($_SESSION["nama_pengguna"])) {
-        header("Location: ./index.html");
+    } else if(!isset($_SESSION["keterangan"])) {
+        header("Location: index.html");
     }
 ?>

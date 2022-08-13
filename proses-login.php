@@ -71,7 +71,7 @@
                 echo "
                 <script>
                     alert('Username atau Password anda Salah, Mohon Coba Lagi');
-                    window.location = 'login.html';
+                    window.location = 'index.html';
                 </script>
                 ";
             }

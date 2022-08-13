@@ -21,17 +21,7 @@ $urutan++;
 $huruf = "RM";
 $norm = $huruf . sprintf("%04s", $urutan);
 
-//Kode Otomatis register
-$query = mysqli_query($koneksi, "SELECT max(no_reg) as RegTerbesar FROM tb_reg_umum");
-$data = mysqli_fetch_array($query);
-$noreg = $data['RegTerbesar'];
 
-$urutan = (int) substr($noreg, 4, 4);
-
-$urutan++;
- 
-$huruf = "PU";
-$noreg = $huruf . sprintf("%04s", $urutan);
 ?>
 <!DOCTYPE html>
 
@@ -210,7 +200,7 @@ $noreg = $huruf . sprintf("%04s", $urutan);
                     $nomor = 1;
                     while($d = mysqli_fetch_array($data)){
                 ?>
-                <form action="proses_tambah_data_umum.php" method="POST">
+                <form action="proses_periksa_data_umum.php" method="POST">
                     <div class="floating-btn">
                         <button class="primary">Submit and Print</button>
                         <button class="warning" href="">Bersihkan</button>
@@ -222,15 +212,16 @@ $noreg = $huruf . sprintf("%04s", $urutan);
                         </div>
                         <div class="inputbox">
                             <span class="detil">No.Register</span>
-                            <input class="forminput" type="text" id="no_reg" name="no_reg" value="<?php echo $noreg?>" readonly>
+                            <input class="forminput" type="text" id="no_reg" name="no_reg" value="<?= $d['no_reg']; ?>" readonly>
                         </div>
                         <div class="inputbox">
                             <span class="detil">Tanggal Masuk</span>
-                            <input class="forminput" type="date" id="indate" value="<?php echo $d['tgl_masuk'] ?>"  name="indate" required>
+                            <input type="text" name="indate" id="indate" value="<?php echo date("Y-m-d") ?>" hidden>
+                            <input class="forminput" type="date" id="indatetampil" value="<?php echo $d['tgl_masuk'] ?>"  name="indatetampil" required>
                         </div>
                         <div class="inputbox">
                             <span class="detil">Nama Pasien</span>
-                            <input class="forminput" type="text" id="namalngkp" value="<?php echo $d['nama_pasien'] ?>" name="namalngkp" required>
+                            <input class="forminput" type="text" id="namalngkp" value="<?php echo $d['nama_pasien'] ?>" name="namalngkp" required autocomplete="off">
                         </div>
                         <div class="inputbox">
                             <span class="detil">Jenis Layanan</span>
@@ -247,24 +238,24 @@ $noreg = $huruf . sprintf("%04s", $urutan);
                         </div>
                         <div class="inputbox">
                             <span class="detil">Diagnosa</span>
-                            <input class="forminput" type="text" id="diagnosa" name="diagnosa" required>
+                            <input class="forminput" type="text" id="diagnosa" name="diagnosa" autocomplete="off">
                         </div>
                         <div class="inputbox"></div>
                         <div class="inputbox">
                             <span class="detil">Keterangan Keluhan</span>
-                            <textarea name="keluhan" id="keluhan" cols="30" rows="5" required></textarea>
+                            <textarea name="keluhan" id="keluhan" cols="30" rows="5" autocomplete="off"></textarea>
                         </div>
                         <div class="inputbox">
                             <span class="detil">Kesimpulan</span>
-                            <textarea name="keluhan" id="keluhan" cols="30" rows="5" required></textarea>
+                            <textarea name="kesimpulan" id="kesimpulan" cols="30" rows="5" autocomplete="off"></textarea>
                         </div>
                     </div>
                     <h2 style="margin-top: 50px;">Terapi Dan Obat</h2>
                     <div class="input-details" id="form-obat">
                         <div class="inputbox">
                             <span class="detil">Terapi/Obat</span>
-                            <input class="forminput obat" type="text" id="obat" name="obat" style="width: 65%" required>
-                            <input class="forminput" type="text" style="width: 20%">
+                            <input class="forminput obat" type="text" id="obat" name="obat[]" style="width: 65%" placeholder="Masukkan Nama Obat">
+                            <input class="forminput" type="text" style="width: 20%" placeholder="Masukkan Dosis" name="dosis[]">
                             <input type="button" value="+" class="btn-medicin" id="add">
                         </div>
                         <!-- <div class="inputbox">
@@ -282,7 +273,7 @@ $noreg = $huruf . sprintf("%04s", $urutan);
             </div>
         </form>
         <footer style="margin-top: 60px">
-            <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+            <p>Copyright © 2022, Powered by Smiley Cloud ッ All rights reserved.</p>
         </footer>
         </div>
         
@@ -296,7 +287,7 @@ $noreg = $huruf . sprintf("%04s", $urutan);
     <script type="text/javascript">
         $(document).ready(function(){
 
-            var html = '<div class="inputbox"><span class="detil">Terapi/Obat</span><input class="forminput obat" type="text" id="obat" name="obat" style="width: 65%" required><input class="forminput" type="text" style="width: 20%; margin-left: 4px"><input type="button" value="x" class="btn-checkit" style="margin-left: 4px" id="remove"></div>';
+            var html = '<div class="inputbox"><span class="detil">Terapi/Obat</span><input class="forminput obat" type="text" id="obat" name="obat[]" style="width: 65%" placeholder="Masukkan Nama Obat" required><input class="forminput" type="text" style="width: 20%; margin-left: 4px" placeholder="Masukkan Dosis" name="dosis[]"><input type="button" value="x" class="btn-checkit" style="margin-left: 4px" id="remove"></div>';
 
             var x = 1;
             $(document).ready(function() {

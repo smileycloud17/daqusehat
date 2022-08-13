@@ -224,7 +224,7 @@ include'../koneksi.php';
           <marquee behavior="" direction="" style="color: red;"> PERINGATAN !!!  Selalu Displin dan Mematuhi Protokol Kesehatan Dalam Pencegahan Covid-19 Patuhi 5M </marquee>
         </div>
         <footer>
-            <p>&copy 2022 Smiley Cloud Team ッ</p>
+            <p>Copyright © 2022, Powered by Smiley Cloud ッ All rights reserved.</p>
         </footer>
     </div>
 

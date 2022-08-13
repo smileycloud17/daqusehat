@@ -158,9 +158,9 @@ if($keterangan != "Farmasi") {
             </div>
 
             <footer>
-                <p>&copy 2022 Klinik Daqu Sehat Malang</p>
+                <p>Copyright © 2022, Powered by Smiley Cloud ッ All rights reserved.</p>
             </footer>
-
+    
         </div>
 
     </div>

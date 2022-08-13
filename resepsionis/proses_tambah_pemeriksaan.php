@@ -20,32 +20,33 @@ $diastole = $_POST['diastole'];
 $no_reg = mysqli_query ($koneksi,"SELECT * FROM tb_pemeriksaan_poliumum ORDER BY id DESC LIMIT 1");
 $data_no_reg = mysqli_fetch_array($no_reg);
 
-if(is_null($data_no_reg)){
-    $no_reg_terakhir = 0;
-}else{
-    $no_reg_terakhir = $data_no_reg['no_reg'];
-}
-$no_reg_baru = sprintf("%02d",$no_reg_terakhir+1);
+// if(is_null($data_no_reg)){
+//     $no_reg_terakhir = 0;
+// }else{
+//     $no_reg_terakhir = $data_no_reg['no_reg'];
+// }
+// $no_reg_baru = sprintf("%02d",$no_reg_terakhir+1);
 
-//Kode Otomatis register
-$query = mysqli_query($koneksi, "SELECT max(no_reg) as RegTerbesar FROM tb_reg_umum");
+//Kode Otomatis register Poli Umum
+$query = mysqli_query($koneksi, "SELECT max(MID(no_reg,3,3)) as RegTerbesar FROM tb_pemeriksaan_poliumum");
 $data = mysqli_fetch_array($query);
 $noreg = $data['RegTerbesar'];
 
-$urutan = (int) substr($noreg, 4, 4);
+$urutan = (int) $noreg;
 
 $urutan++;
  
-$huruf = "PM";
-$noreg = $huruf . sprintf("%04s", $urutan);
+$huruf = "PU";
+$bulantahun = date("my");
+$noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
 
 
 
 $simpan = mysqli_query($koneksi,"INSERT INTO tb_cek_pasien (id,perawatan,no_reg,no_rm,nama_lengkap,tanggal_masuk,layanan,poli,berat_badan,suhu_badan,tinggi_badan,gol_darah,sistole,diastole) 
-VALUES ('','$perawatan','$no_reg_baru','$no_rm','$nama_lengkap','$tanggal_masuk','$layanan','$poli','$berat_badan','$suhu_badan','$tinggi_badan','$gol_darah','$sistole','$diastole')");
+VALUES ('','$perawatan','$noreg','$no_rm','$nama_lengkap','$tanggal_masuk','$layanan','$poli','$berat_badan','$suhu_badan','$tinggi_badan','$gol_darah','$sistole','$diastole')");
 
 $tambah_poliumum = mysqli_query($koneksi, "INSERT INTO tb_pemeriksaan_poliumum (id,no_reg,no_rm,tgl_masuk,nama_pasien,jenis_layanan,jenis_kelamin,status_pelayanan)
-VALUES ('','$no_reg_baru', '$no_rm', '$tanggal_masuk','$nama_lengkap', '$layanan','$jenis_kelamin','Belum Dilayani')");
+VALUES ('','$noreg', '$no_rm', '$tanggal_masuk','$nama_lengkap', '$layanan','$jenis_kelamin','Belum Dilayani')");
  
 if ($simpan and $tambah_poliumum) {
     echo "
