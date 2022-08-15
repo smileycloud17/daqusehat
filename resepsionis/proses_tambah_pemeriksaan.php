@@ -38,8 +38,8 @@ $noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
 $simpan = mysqli_query($koneksi,"INSERT INTO tb_cek_pasien (id,perawatan,no_reg,no_rm,nama_lengkap,tanggal_masuk,layanan,poli,berat_badan,suhu_badan,tinggi_badan,gol_darah,sistole,diastole) 
 VALUES ('','$perawatan','$noreg','$no_rm','$nama_lengkap','$tanggal_masuk','$layanan','$poli','$berat_badan','$suhu_badan','$tinggi_badan','$gol_darah','$sistole','$diastole')");
 
-$tambah_poliumum = mysqli_query($koneksi, "INSERT INTO tb_pemeriksaan_poliumum (id,no_reg,no_rm,tgl_masuk,nama_pasien,jenis_layanan,jenis_kelamin,status_pelayanan)
-VALUES ('','$noreg', '$no_rm', '$tanggal_masuk','$nama_lengkap', '$layanan','$jenis_kelamin','Belum Dilayani')");
+$tambah_poliumum = mysqli_query($koneksi, "INSERT INTO tb_pemeriksaan_poliumum (id,no_reg,no_rm,nama_pasien,jenis_layanan,status_pelayanan)
+VALUES ('','$noreg', '$no_rm','$nama_lengkap', '$layanan','Belum Dilayani')");
  
 if ($simpan and $tambah_poliumum) {
     echo "

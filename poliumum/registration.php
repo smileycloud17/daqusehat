@@ -161,6 +161,10 @@ $norm = $huruf . sprintf("%04s", $urutan);
                              <h3><?= $dp['nama_lengkap']; ?></h3>
                         </div>
                         <div class="inputbox">
+                            <span class="detil">Jenis Pelayanan</span>
+                             <h3><?= $dp['layanan']; ?></h3>
+                        </div>
+                        <div class="inputbox">
                             <span class="detil">Berat Badan</span>
                              <h3><?= $dp['berat_badan']; ?></h3>
                         </div>
@@ -214,48 +218,40 @@ $norm = $huruf . sprintf("%04s", $urutan);
                             <span class="detil">No.Register</span>
                             <input class="forminput" type="text" id="no_reg" name="no_reg" value="<?= $d['no_reg']; ?>" readonly>
                         </div>
-                        <div class="inputbox">
-                            <span class="detil">Tanggal Masuk</span>
                             <input type="text" name="indate" id="indate" value="<?php echo date("Y-m-d") ?>" hidden>
-                            <input class="forminput" type="date" id="indatetampil" value="<?php echo $d['tgl_masuk'] ?>"  name="indatetampil" required>
-                        </div>
                         <div class="inputbox">
                             <span class="detil">Nama Pasien</span>
                             <input class="forminput" type="text" id="namalngkp" value="<?php echo $d['nama_pasien'] ?>" name="namalngkp" required autocomplete="off">
                         </div>
                         <div class="inputbox">
                             <span class="detil">Jenis Layanan</span>
-                            <input class="forminput" type="text" id="jenis_pelayanan" name="jenis_pelayanan" value="<?php echo $d['jenis_layanan']; ?>" readonly>
+                            <input class="forminput" type="text" id="jenis_pelayanan" name="jenis_pelayanan" value="<?php echo $d['jenis_layanan']; ?>" hidden>
+                            <h3 style="margin-top: 15px"><?php echo $d['jenis_layanan'] ?></h3>
                         </div>
                         <div class="inputbox">
-                            <span class="detil">Jenis Kelamin</span>
-                            <select name="jenis_kelamin" id="sex">
-                                <option value="">--Jenis Kelamin--</option>
-                                <option value="Laki-laki" <?php echo $d['jenis_kelamin'] == 'Laki-laki' ? 'selected="selected"' : '' ?> >Laki-laki</option>
-                                <option value="Perempuan" <?php echo $d['jenis_kelamin'] == 'Perempuan' ? 'selected="selected"' : '' ?> >Perempuan</option>
-                                <option value="-" <?php echo $d['jenis_kelamin'] == '-' ? 'selected="selected"' : '' ?> >Tidak disebutkan</option>
-                            </select>
+                            <span class="detil">Ananmnesa</span>
+                            <textarea name="ananmnesa" id="ananmnesa" cols="30" rows="5" autocomplete="off"></textarea>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Pemeriksaan Fisik</span>
+                            <textarea name="pemeriksaan_fisik" id="pemeriksaan_fisik" cols="30" rows="5" autocomplete="off"></textarea>
+                        </div>
+                        <div class="inputbox">
+                            <span class="detil">Pemeriksaan Penunjang</span>
+                            <input class="forminput" type="text" id="pemeriksaan_penunjang" name="pemeriksaan_penunjang" autocomplete="off">
                         </div>
                         <div class="inputbox">
                             <span class="detil">Diagnosa</span>
                             <input class="forminput" type="text" id="diagnosa" name="diagnosa" autocomplete="off">
-                        </div>
-                        <div class="inputbox"></div>
-                        <div class="inputbox">
-                            <span class="detil">Keterangan Keluhan</span>
-                            <textarea name="keluhan" id="keluhan" cols="30" rows="5" autocomplete="off"></textarea>
-                        </div>
-                        <div class="inputbox">
-                            <span class="detil">Kesimpulan</span>
-                            <textarea name="kesimpulan" id="kesimpulan" cols="30" rows="5" autocomplete="off"></textarea>
                         </div>
                     </div>
                     <h2 style="margin-top: 50px;">Terapi Dan Obat</h2>
                     <div class="input-details" id="form-obat">
                         <div class="inputbox">
                             <span class="detil">Terapi/Obat</span>
-                            <input class="forminput obat" type="text" id="obat" name="obat[]" style="width: 65%" placeholder="Masukkan Nama Obat">
-                            <input class="forminput" type="text" style="width: 20%" placeholder="Masukkan Dosis" name="dosis[]">
+                            <input class="forminput obat" type="text" id="obat" name="obat[]" style="width: 50%" placeholder="Nama Obat">
+                            <input class="forminput" type="number" style="width: 15%" placeholder="Jumlah" name="jumlah[]">
+                            <input class="forminput" type="text" style="width: 15%" placeholder="Signa" name="dosis[]">
                             <input type="button" value="+" class="btn-medicin" id="add">
                         </div>
                         <!-- <div class="inputbox">
@@ -287,7 +283,7 @@ $norm = $huruf . sprintf("%04s", $urutan);
     <script type="text/javascript">
         $(document).ready(function(){
 
-            var html = '<div class="inputbox"><span class="detil">Terapi/Obat</span><input class="forminput obat" type="text" id="obat" name="obat[]" style="width: 65%" placeholder="Masukkan Nama Obat" required><input class="forminput" type="text" style="width: 20%; margin-left: 4px" placeholder="Masukkan Dosis" name="dosis[]"><input type="button" value="x" class="btn-checkit" style="margin-left: 4px" id="remove"></div>';
+            var html = '<div class="inputbox"><span class="detil">Terapi/Obat</span><input class="forminput obat" type="text" id="obat" name="obat[]" style="width: 50%" placeholder="Nama Obat"><input class="forminput" type="number" style="width: 15%; margin-left: 4px" placeholder="Jumlah" name="jumlah[]"><input class="forminput" type="text" style="width: 15%; margin-left: 4px" placeholder="Signa" name="dosis[]"><input type="button" value="x" class="btn-checkit" style="margin-left: 4px" id="remove"></div>';
 
             var x = 1;
             $(document).ready(function() {

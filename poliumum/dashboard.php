@@ -170,7 +170,6 @@ $keterangan = $_SESSION["keterangan"];
                                 <td>No.Reg</td>
                                 <td>No.RM</td>
                                 <td>Nama</td>
-                                <td>Tanggal Periksa</td>
                                 <td>Jenis Pelayanan</td>
                                 <td>Action</td>
                             </tr>
@@ -254,7 +253,7 @@ $keterangan = $_SESSION["keterangan"];
                             var visible = "Disable";
                         }
 
-                        $("tbody").append("<tr><td>"+this['no_reg']+"</td><td>"+this['no_rm']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['tgl_masuk']+"</td><td>"+this['jenis_layanan']+"</td><td><a href="+ linkTo +" class='"+ statusPelayanan + status +"'>"+this['status_pelayanan']+"</a></td></tr>");
+                        $("tbody").append("<tr><td>"+this['no_reg']+"</td><td>"+this['no_rm']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['jenis_layanan']+"</td><td><a href="+ linkTo +" class='"+ statusPelayanan + status +"'>"+this['status_pelayanan']+"</a></td></tr>");
                     });
                 });
             }
