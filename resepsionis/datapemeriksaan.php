@@ -212,7 +212,7 @@ $halaman = ceil($totaldata/$perPage);
                                     <td><?php echo $d['diastole'] ?></td>
                                     <td>
                                         <!-- <a href="editpasien.php?no_rm=<?php echo $d['no_rm'] ?>"><i class='far fa-edit' style="color:#4FBDBA"></i></a> -->
-                                        <a href="" onClick="confirm_modal('proses-hapus-pemeriksaan.php?no_reg=<?php echo $d['no_reg'] ?>')" data-bs-toggle="modal" data-bs-target="#ModalDelete"><i class='fas fa-trash-alt' style="color:red"></i></a>
+                                        <a href="" onClick="confirm_modal('proses-hapus-pemeriksaan.php?id=<?php echo $d['id'] ?>')" data-bs-toggle="modal" data-bs-target="#ModalDelete"><i class='fas fa-trash-alt' style="color:red"></i></a>
                                     </td>
                                 </tr>
                                 <?php $no++; } ?>

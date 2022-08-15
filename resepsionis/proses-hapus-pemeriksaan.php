@@ -1,8 +1,8 @@
 <?php
 include "../koneksi.php";
-$no_reg = $_GET['no_reg'];
-$hapus = mysqli_query($koneksi,"DELETE FROM tb_cek_pasien WHERE no_reg='$no_reg'");
-$hapus_poliumum = mysqli_query($koneksi,"DELETE FROM tb_pemeriksaan_poliumum WHERE no_reg='$no_reg'");
+$id = $_GET['id'];
+$hapus = mysqli_query($koneksi,"DELETE FROM tb_cek_pasien WHERE id='$id'");
+$hapus_poliumum = mysqli_query($koneksi,"DELETE FROM tb_pemeriksaan_poliumum WHERE id='$id'");
 
     
 if ($hapus and $hapus_poliumum) {

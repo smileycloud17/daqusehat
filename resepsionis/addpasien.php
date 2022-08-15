@@ -200,14 +200,14 @@ $noidlanjut = $urutanid;
                 <table class="tabel-tambah-pasien">
                     <tbody>
                         <tr>
-                            <input type="text" name="id" required="required" id="noId" placeholder="Id" value="<?php echo $noidlanjut?>" hidden>
+                            <input type="text" name="id" id="noId" placeholder="Id" value="<?php echo $noidlanjut?>" hidden>
                             <th>No RM</th>
                             <th>
-                                <input type="text" name="no_rm1" required="required" id="rm1" style="width: 40px;" maxlength="2" onkeyup="moveField(this,'rm2')" placeholder="No RM" value="<?php echo sprintf("%02d", $x)?>">
+                                <input type="text" name="no_rm1" id="rm1" style="width: 40px;" maxlength="2" onkeyup="moveField(this,'rm2')" placeholder="No RM" value="<?php echo sprintf("%02d", $x)?>">
                                 <p class="pembatas-no-rm">-</p>
-                                <input type="text" name="no_rm2" required="required" id="rm2" style="width: 40px;" maxlength="2" onkeyup="moveField(this,'rm3')" placeholder="No RM" value="<?php echo sprintf("%02d", $tambahy)?>">
+                                <input type="text" name="no_rm2" id="rm2" style="width: 40px;" maxlength="2" onkeyup="moveField(this,'rm3')" placeholder="No RM" value="<?php echo sprintf("%02d", $tambahy)?>">
                                 <p class="pembatas-no-rm">-</p>
-                                <input type="text" name="no_rm3" required="required" id="rm3" style="width: 40px;" placeholder="No RM" value="<?php echo sprintf("%02d", $z)?>">
+                                <input type="text" name="no_rm3" id="rm3" style="width: 40px;" placeholder="No RM" value="<?php echo sprintf("%02d", $z)?>">
                                 <i class="info-no-rm">*Angka dapat diganti</i>
                             </th>
                         </tr>
@@ -215,7 +215,7 @@ $noidlanjut = $urutanid;
                             <th>Nomor BPJS</th>
                             <th><input type="text" name="no_bpjs" id="nobpjs" autocomplete="off"></th>
                             <th align="center">Provinsi</th>
-                            <th><select name="provinsi" id="form_prov" class="form_prov" required>
+                            <th><select name="provinsi" id="form_prov" class="form_prov" >
                             <option value=""></option>
                             <?php 
                             $daerah = mysqli_query($koneksi,"SELECT kode,nama FROM wilayah_2020 WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
@@ -230,59 +230,59 @@ $noidlanjut = $urutanid;
                         </tr>
                         <tr>
                             <th>NIK</th>
-                            <th><input type="text" name="nik" id="noktp" autocomplete="off" required></th>
+                            <th><input type="text" name="nik" id="noktp" autocomplete="off" ></th>
                             <th align="center">Kab/Kota</th>
-                            <th><select name="kabupaten" id="form_kab" required>
+                            <th><select name="kabupaten" id="form_kab" >
                                 </select></th>
                         </tr>
                         <tr>
                             <th>Nama Lengkap</th>
-                            <th><input type="text" name="nama" id="namalngkp" autocomplete="off" required></th>
+                            <th><input type="text" name="nama" id="namalngkp" autocomplete="off" ></th>
                             <th align="center">Kecamatan</th>
-                            <th><select name="kecamatan" id="form_kec" required>
+                            <th><select name="kecamatan" id="form_kec" >
                                     
                                 </select></th>
                         </tr>
                         <tr>
                             <th>Jenis Kelamin</th>
-                            <th><select name="jenis_kelamin" id="sex" required>
+                            <th><select name="jenis_kelamin" id="sex" >
                                 <option value="">--Jenis Kelamin--</option>
                                 <option value="Laki-laki">Laki - Laki</option>
                                 <option value="Perempuan">Perempuan</option>
                                 <option value="-">Tidak Disebutkan</option>
                             </select></th>
                             <th align="center">Kelurahan / Desa</th>
-                            <th><select name="kelurahan" id="form_des" required>
+                            <th><select name="kelurahan" id="form_des" >
                                     
                                 </select></th>
                         </tr>
                         <tr>
                             <th>Status Menikah</th>
-                            <th><select name="status_menikah" id="marid" required>
+                            <th><select name="status_menikah" id="marid" >
                                 <option value="">--Status Menikah--</option>
                                 <option value="sudah">Sudah Menikah</option>
                                 <option value="belum">Belum Menikah</option>
                             </select></th>
                             <th></th>
                             <th collspan="2">
-                                <input type="text" name="rt" id="rt" placeholder="RT" style="width: 60px" autocomplete="off" required>
+                                <input type="text" name="rt" id="rt" placeholder="RT" style="width: 60px" autocomplete="off" >
                                 <p class="pembatas-no-rm">-</p>
-                                <input type="text" name="rw" id="rw" placeholder="RW" style="width: 60px" autocomplete="off" required>
+                                <input type="text" name="rw" id="rw" placeholder="RW" style="width: 60px" autocomplete="off" >
                             </th>
                         </tr>
                         <tr>
                             <th>Nama Orang Tua</th>
-                            <th><input type="text" name="nama_ortu" id="namaortu" autocomplete="off" required></th>
+                            <th><input type="text" name="nama_ortu" id="namaortu" autocomplete="off" ></th>
                         </tr>
                         <tr>
                             <th>No Telp</th>
-                            <th><input type="text" name="no_telp" id="notlp" autocomplete="off" required></th>
+                            <th><input type="text" name="no_telp" id="notlp" autocomplete="off" ></th>
                         </tr>
                         <tr>
                             <th>Tanggal Lahir</th>
-                            <th><input type="date" name="tanggal_lahir" id="lahirdate" required></th>
+                            <th><input type="date" name="tanggal_lahir" id="lahirdate" ></th>
                             <th align="center">Agama</th>
-                            <th><select name="agama" id="religi" required>
+                            <th><select name="agama" id="religi" >
                                 <option value="1">--Pilih--</option>
                                 <!-- <?php 
                                 $agama = mysqli_query($koneksi,"SELECT * FROM master_agama ORDER BY id_agama");
@@ -302,9 +302,9 @@ $noidlanjut = $urutanid;
                         </tr>
                         <tr>
                             <th>Alamat</th>
-                            <th><textarea name="alamat" id="" cols="35" rows="5" required></textarea></th>
+                            <th><textarea name="alamat" id="" cols="35" rows="5" ></textarea></th>
                             <th align="center">Alamat Domisili</th>
-                            <th><input type="text" name="domisili" id="alamatdom" autocomplete="off" required></th>
+                            <th><input type="text" name="domisili" id="alamatdom" autocomplete="off" ></th>
                         </tr>
                     </tbody>
                 </table>
