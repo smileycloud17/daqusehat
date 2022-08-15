@@ -3,7 +3,7 @@
 
     $tanggal_sekarang = date("Y-m-d");
 
-    $sql = mysqli_query($koneksi, "SELECT * FROM tb_pemeriksaan_poliumum ORDER BY id ASC where tanggal_masuk = '$tanggal_sekarang' LIMIT 10");
+    $sql = mysqli_query($koneksi, "SELECT * FROM tb_pemeriksaan_poliumum where tanggal_masuk = '$tanggal_sekarang' ORDER BY id ASC LIMIT 10");
     $result = array();
     
     while ($row = mysqli_fetch_assoc($sql)) {

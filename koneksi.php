@@ -1,4 +1,5 @@
 <?php 
+    date_default_timezone_set('Asia/Jakarta');
 
     // Database Hosting
     $koneksi = mysqli_connect("klinikdaqusehatmalang.site", "u1648364_daqusehat", "Daqusehat123.", "u1648364_daqusehat");
