@@ -251,11 +251,10 @@ include'../koneksi.php';
                     $.each(data.result, function() {
                         var tgl_lahir = this['tanggal_lahir'];
                         var tgl = new Date(tgl_lahir);
-                        var datefns = require("date-fns");
                         var tanggal = tgl.getDate();
                         var bulan = tgl.getMonth();
                         var tahun = tgl.getFullYear();
-                        $("tbody").append("<tr><td>"+(no++)+"</td><td>"+this['no_rm']+"</td><td>"+this['no_bpjs']+"</td><td>"+this['nik']+"</td><td>"+this['nama_pasien']+"</td><td>"+datefns.format(tgl,"dd-MM-yyyy")+"</td><td>"+this['no_telp']+"</td><td>"+this['alamat']+"</td></tr>");
+                        $("tbody").append("<tr><td>"+(no++)+"</td><td>"+this['no_rm']+"</td><td>"+this['no_bpjs']+"</td><td>"+this['nik']+"</td><td>"+this['nama_pasien']+"</td><td>"+tgl.toLocaleDateString("id", 'dd-MM-yyyy')+"</td><td>"+this['no_telp']+"</td><td>"+this['alamat']+"</td></tr>");
                     });
                 });
             }
