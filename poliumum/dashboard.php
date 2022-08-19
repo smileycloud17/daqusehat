@@ -186,6 +186,7 @@ $keterangan = $_SESSION["keterangan"];
                         </tbody>
                     </table>
                 </div>
+                <a href="+ linkTo +" class='"+ statusPelayanan + status +"'>"+this['status_pelayanan']+"</a>
             </div>
             <!-- Preview Jam Pengingat -->
             <!-- <div class="clock">
@@ -243,7 +244,8 @@ $keterangan = $_SESSION["keterangan"];
                     $.each(data.result, function() {
                         if(this['status_pelayanan'] == "Belum Dilayani"){
                             var statusPelayanan = "btn-pelayanan";
-                            var status = " belum";
+                            var status = " 
+                            ";
                             var linkTo = "registration?no_reg="+this['no_reg'];
                             var visible = "";
                         } else if(this['status_pelayanan'] == "Sudah Dilayani"){

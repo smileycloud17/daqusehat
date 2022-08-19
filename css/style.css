@@ -1477,7 +1477,7 @@ footer p {
     margin: 5px 10px;
     float: left;
     font-size: 11px;
-    color: red;
+    color: var(--jam);
 }
 
 .tabel-tambah-pasien th textarea {
@@ -1594,6 +1594,13 @@ footer p {
     background-color: #B5CDA3;
     cursor: default;
  }
+
+ input[type="radio"] {
+    -ms-transform: scale(1.5); /* Untu IE  */
+    -webkit-transform: scale(1.5); /* untuk Chrome, Mozilla,Safari, Opera */
+    transform: scale(1.5);
+ }
+
 
  /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

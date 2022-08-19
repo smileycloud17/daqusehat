@@ -183,11 +183,8 @@ include'../koneksi.php';
                                 <th>NIK</th>
                                 <th>Nama Lengkap</th>
                                 <th>Tanggal Lahir</th>
-                                <th>Gender</th>
                                 <th>No Telp</th>
                                 <th>Alamat</th>
-                                <th>Alamat Domisili</th>
-                                <th>Agama</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -252,7 +249,9 @@ include'../koneksi.php';
                     $("tbody").empty();
                     var no = 1;
                     $.each(data.result, function() {
-                        $("tbody").append("<tr><td>"+(no++)+"</td><td>"+this['no_rm']+"</td><td>"+this['no_bpjs']+"</td><td>"+this['nik']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['tanggal_lahir']+"</td><td>"+this['jenis_kelamin']+"</td><td>"+this['no_telp']+"</td><td>"+this['alamat']+"</td><td>"+this['domisili']+"</td><td>"+this['nama_agama']+"</td></tr>");
+                        var tgl_lahir = this['tanggal_lahir'];
+                        var tgl = new Date(tgl_lahir);
+                        $("tbody").append("<tr><td>"+(no++)+"</td><td>"+this['no_rm']+"</td><td>"+this['no_bpjs']+"</td><td>"+this['nik']+"</td><td>"+this['nama_pasien']+"</td><td>"+tgl_lahir+"</td><td>"+this['no_telp']+"</td><td>"+this['alamat']+"</td></tr>");
                     });
                 });
             }

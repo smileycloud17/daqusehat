@@ -57,4 +57,6 @@ else {
         </script>
     ";
 }
+
+$no_reg = mysqli_query ($koneksi,"SELECT * FROM tb_pemeriksaan_poliumum ORDER BY id DESC");
 ?>

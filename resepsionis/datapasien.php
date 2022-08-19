@@ -45,7 +45,28 @@ if($page < $halaman - $jumlahlink){
 } else{
     $end_number = $halaman;
 }
+
+// Umur
+function hitung_umur($tanggal_lahir){
+	$birthDate = new DateTime($tanggal_lahir);
+	$today = new DateTime("today");
+    $tglerror = new DateTime("0000-00-00");
+	if ($birthDate > $today) { 
+	    $y = "0";
+        $m = "0";
+        $d = "0";
+        return $y." tahun ".$m." bulan ";
+	} else if($birthDate == $tglerror){
+        return "Tanggal lahir kosong";
+    }else {  
+        $y = $today->diff($birthDate)->y;
+        $m = $today->diff($birthDate)->m;
+        $d = $today->diff($birthDate)->d;
+        return $y." tahun ".$m." bulan ";
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 
@@ -204,6 +225,7 @@ if($page < $halaman - $jumlahlink){
                                 <th>NIK</th>
                                 <th>Nama Lengkap</th>
                                 <th>Tanggal Lahir</th>
+                                <th>Umur</th>
                                 <th>Gender</th>
                                 <th>No Telp</th>
                                 <th>Alamat</th>
@@ -224,7 +246,8 @@ if($page < $halaman - $jumlahlink){
                                     <td><?php echo $d['no_bpjs'] ?></td>
                                     <td><?php echo $d['nik']?></td>
                                     <td><?php echo $d['nama_pasien'] ?></td>
-                                    <td><?php $tanggal = $d['tanggal_lahir']; echo date("d M Y", strtotime($tanggal)) ?></td>
+                                    <td><?php $tanggal = $d['tanggal_lahir']; echo date("d M Y", strtotime($tanggal));?></td>
+                                    <td><?php echo  hitung_umur($d['tanggal_lahir']) ?></td>
                                     <td><?php echo $d['jenis_kelamin'] ?></td>
                                     <td><?php echo $d['no_telp'] ?></td>
                                     <td><?php echo $d['alamat'] ?></td>
