@@ -8,16 +8,17 @@ require_once("../authuser.php");
 // Search
 if(isset($_POST['tombol-cari'])){
     $cari = $_POST['cari'];
+    $_SESSION['cari'] = $cari;
 }else{
-    $cari = '';
+    $cari = $_SESSION['cari'];
 }
 
 // pagination
-$perPage = 5; //isi data perhalaman
+$perPage = 50; //isi data perhalaman
 $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
 $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
-$datapemeriksaan = "SELECT * FROM tb_cek_pasien LIMIT $start, $perPage";
+$datapemeriksaan = "SELECT * FROM tb_cek_pasien WHERE no_rm LIKE '%$cari%' OR nama_lengkap LIKE '%$cari%' OR  no_reg LIKE '%$cari%' OR  poli LIKE '%$cari%' LIMIT $start, $perPage";
 $datapemeriksaan_limit = mysqli_query($koneksi, $datapemeriksaan);
 
 $data = mysqli_query($koneksi,"select * from tb_cek_pasien WHERE no_rm LIKE '%$cari%' OR nama_lengkap LIKE '%$cari%'");
@@ -160,11 +161,11 @@ $halaman = ceil($totaldata/$perPage);
         <div class="cardbox">
             <div class="pasiendt">
                 <div>
-                    <form action="datapemerikaan.php" method="post">
+                    <form action="datapemeriksaan.php" method="post">
                         <h2>Data Pemeriksaan Pasien</h2><br>
                         <div class="search">
                             <label>
-                                <input type="text" placeholder="Search" name="cari" autofocus>
+                                <input type="text" placeholder="Search" name="cari" autofocus autocomplete="off">
                                 <a><i class='fas fa-search'></i></a>
                                 <input type="submit" value="" name="tombol-cari" hidden>
                             </label>
