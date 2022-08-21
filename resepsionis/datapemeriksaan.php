@@ -5,6 +5,8 @@ include '../koneksi.php';
 $tabel = mysqli_query($koneksi,"SELECT * FROM tb_cek_pasien");
 require_once("../authuser.php");
 
+error_reporting(0);
+
 // Search
 if(isset($_POST['tombol-cari'])){
     $cari = $_POST['cari'];
