@@ -21,7 +21,25 @@ $urutan++;
 $huruf = "RM";
 $norm = $huruf . sprintf("%04s", $urutan);
 
-
+// Umur
+function hitung_umur($tanggal_lahir){
+	$birthDate = new DateTime($tanggal_lahir);
+	$today = new DateTime("today");
+    $tglerror = new DateTime("0000-00-00");
+	if ($birthDate > $today) { 
+	    $y = "0";
+        $m = "0";
+        $d = "0";
+        return $y." tahun ".$m." bulan ";
+	} else if($birthDate == $tglerror){
+        return "Tanggal lahir kosong";
+    }else {  
+        $y = $today->diff($birthDate)->y;
+        $m = $today->diff($birthDate)->m;
+        $d = $today->diff($birthDate)->d;
+        return $y." tahun ".$m." bulan ";
+    }
+}
 ?>
 <!DOCTYPE html>
 
@@ -141,9 +159,9 @@ $norm = $huruf . sprintf("%04s", $urutan);
         <div class="pendaftaran">
             <div class="registrasi">
                 <?php 
-                    $data_pemeriksaan = mysqli_query($koneksi,"select * from tb_cek_pasien where no_reg='$no_reg'");
+                    $data_pemeriksaan = mysqli_query($koneksi,"select * from tb_cek_pasien INNER JOIN tb_pasien_resepsionis ON tb_cek_pasien.no_rm = tb_pasien_resepsionis.no_rm where no_reg='$no_reg'");
                     $nomor = 1;
-                    while($dp = mysqli_fetch_array($data_pemeriksaan)){
+                    $dp = mysqli_fetch_array($data_pemeriksaan);
                 ?>
                 <form>
                 <h2>Hasil Cek</h2>
@@ -161,8 +179,8 @@ $norm = $huruf . sprintf("%04s", $urutan);
                              <h3><?= $dp['nama_lengkap']; ?></h3>
                         </div>
                         <div class="inputbox">
-                            <span class="detil">Jenis Pelayanan</span>
-                             <h3><?= $dp['layanan']; ?></h3>
+                            <span class="detil">Usia</span>
+                             <h3><?= hitung_umur($dp['tanggal_lahir']); ?></h3>
                         </div>
                         <div class="inputbox">
                             <span class="detil">Berat Badan</span>
@@ -193,9 +211,6 @@ $norm = $huruf . sprintf("%04s", $urutan);
                         </div>
                     </div>
                 </form>
-                <?php 
-                    }
-                ?>
             </div>
             <div class="registrasi">
                 <h2>Data Pemeriksaan</h2>

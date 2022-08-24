@@ -22,6 +22,23 @@ $keterangan = $_SESSION["keterangan"];
     <div class="loading overlayer">
         <div class="spinner"></div>
     </div>
+    <!-- <div class="loading overlayer">
+        <div class="spinner-box">
+            <div class="blue-orbit leo">
+            </div>
+    
+            <div class="green-orbit leo">
+            </div>
+            
+            <div class="red-orbit leo">
+            </div>
+            
+            <div class="white-orbit w1 leo">
+            </div><div class="white-orbit w2 leo">
+            </div><div class="white-orbit w3 leo">
+            </div>
+        </div>
+    </div> -->
     <!-- Loading End -->
     <div class="contain">
         <div class="navigasi">

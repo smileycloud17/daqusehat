@@ -8,7 +8,9 @@ if($keterangan != "Farmasi") {
 
 <head>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../fontawesome/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Klinik Daqu Sehat</title>
 
 </head>
@@ -145,76 +147,22 @@ if($keterangan != "Farmasi") {
                     <h2>Daftar Tabel Pasien Terakhir</h2>
                     <a href="#" class="tombol">View All</a>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>No. Reg</td>
-                            <td align="center">Nama</td>
-                            <td align="center">Alamat</td>
-                            <td>No. Telp</td>
-                            <td>Tanggal Periksa</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A0121</td>
-                            <td>Nania Yusuf</td>
-                            <td>Wonorejo Permai Timur</td>
-                            <td>08123763422</td>
-                            <td>5/27/15</td>
-                        </tr>
-                        <tr>
-                            <td>A0122</td>
-                            <td>Adika Priatama</td>
-                            <td>House Lane</td>
-                            <td>08128563433</td>
-                            <td>1/31/14</td>
-                        </tr>
-                        <tr>
-                            <td>A0123</td>
-                            <td>Danar Indra</td>
-                            <td>Ampera Daerah Khusus</td>
-                            <td>08128556406</td>
-                            <td>5/30/14</td>
-                        </tr>
-                        <tr>
-                            <td>A0124</td>
-                            <td>Winda Viska</td>
-                            <td>Jl Dr Sam Ratulangi</td>
-                            <td>08128786494</td>
-                            <td>5/30/14</td>
-                        </tr>
-                        <tr>
-                            <td>A0125</td>
-                            <td>Annisa Widya N</td>
-                            <td>Jl Sultan Hasanudin</td>
-                            <td>08128236467</td>
-                            <td>5/20/14</td>
-                        </tr>
-                        <tr>
-                            <td>A0126</td>
-                            <td>Arinia Sasmita</td>
-                            <td>Graha Cakrawala Selatan</td>
-                            <td>08248786486</td>
-                            <td>2/12/14</td>
-                        </tr>
-                        <tr>
-                            <td>A0127</td>
-                            <td>Roni Supriadi</td>
-                            <td>Durian Runtuh 143</td>
-                            <td>08528266443</td>
-                            <td>3/30/14</td>
-                        </tr>
-                        <tr>
-                            <td>A0124</td>
-                            <td>Alvaro Hutapea</td>
-                            <td>Jl Kencana Putih</td>
-                            <td>08123786472</td>
-                            <td>5/12/14</td>
-                        </tr>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="tabel-dashboard">
+                    <table>
+                        <thead>
+                            <tr>
+                                <!-- <td>No</td> -->
+                                <td>No.Reg</td>
+                                <td>No.RM</td>
+                                <td>Nama</td>
+                                <td>Jenis Pelayanan</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody id="tampildata">
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- Preview Jam Pengingat -->
             <div class="clock">
@@ -249,10 +197,69 @@ if($keterangan != "Farmasi") {
 
     </div>
 
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script src="../js/script.js"></script>
     <script src="../js/load.js"></script>
     <script src="../js/clock.js"></script>
 
+    <!-- Tampilan data -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+                selesai();
+            });
+            
+            function selesai() {
+                setTimeout(function() {
+                    update();
+                    selesai(); 
+                }, 200);
+            }
+            
+            function update() {
+                $.getJSON("data_obat_masuk.php", function(data) {
+                    $("tbody").empty();
+                    var no = 1;
+                    $.each(data.result, function() {
+                        if(this['status_pelayanan'] == "Belum Dilayani"){
+                            var statusPelayanan = "btn-pelayanan";
+                            var status = " belum";
+                            var linkTo = "registration?no_reg="+this['no_reg'];
+                            var visible = "";
+                        } else if(this['status_pelayanan'] == "Sudah Dilayani"){
+                            var statusPelayanan = "btn-pelayanan";
+                            var status = " sudah";
+                            var linkTo = "#";
+                            var visible = "Disable";
+                        }
+
+                        $("tbody").append("<tr><td>"+this['no_reg']+"</td><td>"+this['no_rm']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['jenis_layanan']+"</td><td><a href='facebook.com' class='btn-pelayanan lihat-obat'>Lihat Obat</a></td></tr>");
+                    });
+                });
+            }
+    </script>
 
     <script>
         // ToggleMenu
