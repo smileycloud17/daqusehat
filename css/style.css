@@ -1747,6 +1747,38 @@ input[type=number] {
     background-color: var(--bluehover);
     cursor: pointer;
   }
+
+  .status-pelayanan{
+    color: var(--angka);
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: var(--card);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+  }
+
+  .modal-title {
+    color: var(--tulisan);
+  }
+
+  .btn-close{
+    color: var(--tulisan);
+  }
+
+  .modal-body{
+    color: var(--tulisan);
+  }
   
 
 /* loading close */

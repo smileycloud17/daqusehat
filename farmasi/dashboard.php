@@ -197,33 +197,43 @@ if($keterangan != "Farmasi") {
 
     </div>
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="detailobat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Detail Obat</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
 
     <script src="../js/script.js"></script>
     <script src="../js/load.js"></script>
     <script src="../js/clock.js"></script>
+    <script src="../bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- Menampilkan data obat -->
+    <script>
+        $(function(){
+            $(document).on('click','.lihat-obat',function(e){
+                e.preventDefault();
+                $("#detailobat").modal('show');
+                $.post('obat.php',{id:$(this).attr('data-id')},
+                    function(html){
+                        $(".modal-dialog").html(html);
+
+                    });
+            });
+        });
+    </script>
 
     <!-- Tampilan data -->
     <script type="text/javascript">
@@ -240,7 +250,8 @@ if($keterangan != "Farmasi") {
             
             function update() {
                 $.getJSON("data_obat_masuk.php", function(data) {
-                    $("tbody").empty();
+                    var tampildata = document.getElementById("tampildata");
+                    $(tampildata).empty();
                     var no = 1;
                     $.each(data.result, function() {
                         if(this['status_pelayanan'] == "Belum Dilayani"){
@@ -255,7 +266,7 @@ if($keterangan != "Farmasi") {
                             var visible = "Disable";
                         }
 
-                        $("tbody").append("<tr><td>"+this['no_reg']+"</td><td>"+this['no_rm']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['jenis_layanan']+"</td><td><a href='facebook.com' class='btn-pelayanan lihat-obat'>Lihat Obat</a></td></tr>");
+                        $(tampildata).append("<tr><td>"+this['no_reg']+"</td><td>"+this['no_rm']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['jenis_layanan']+"</td><td><a href='facebook.com' class='btn-pelayanan lihat-obat' data-id='"+this['no_reg']+"' data-bs-toggle='modal' data-bs-target='#detailobat'>Lihat Obat</a></td></tr>");
                     });
                 });
             }
