@@ -129,7 +129,7 @@ if($keterangan != "Farmasi") {
                     <p style="display: block;"> Perhatian harap inputkan data pasien dengan benar dan sesuai prosedur yang di tetapkan
                     jika sudah di inputkan data pasien dengan benar harap di cek ulang kembali penulisan nama mauapun angka pada data, dan jangan lupa cek kembali pada data pasien setelah di submit terimakasih
                     </p><br>
-                    <a href="registration" class="btn"><i class="fa fa-plus-square"></i>Tambah Pasien</a>
+                    <a href="registration" class="btnrr"><i class="fa fa-plus-square"></i>Tambah Pasien</a>
                 </center>
             </div>
             

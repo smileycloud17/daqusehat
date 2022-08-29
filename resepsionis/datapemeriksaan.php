@@ -5,6 +5,7 @@ include '../koneksi.php';
 $tabel = mysqli_query($koneksi,"SELECT * FROM tb_cek_pasien");
 require_once("../authuser.php");
 
+
 error_reporting(0);
 
 // Search
@@ -34,7 +35,7 @@ $halaman = ceil($totaldata/$perPage);
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" href="fontawesome/css/all.css"> -->
-    <link rel="stylesheet" href="../bootstrap/scss/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.css">
     <link rel="shortcut icon" href="../assets/Proyek Baru.png">
     <title>Klinik Daqu Sehat</title>
 
@@ -184,12 +185,7 @@ $halaman = ceil($totaldata/$perPage);
                                 <th>No RM</th>
                                 <th>Nama Lengkap</th>
                                 <th>Poli</th>
-                                <th>Berat Badan</th>
                                 <th>Suhu Badan</th>
-                                <th>Tinggi Badan</th>
-                                <th>Golongan Darah</th>
-                                <th>Sistole</th>
-                                <th>Diastole</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -198,24 +194,34 @@ $halaman = ceil($totaldata/$perPage);
                                 <?php
                                     $no = 1;
                                     while($d = mysqli_fetch_array($datapemeriksaan_limit)){
+                                        // $data_obat = mysqli_query($koneksi, "SELECT * FROM tb_obat_hasil_pemeriksaan where no_reg = $no_reg");
+                                        // $do = mysqli_fetch_array($data_obat);
                                 ?>
                                 <tr>
                                     <td><?php echo $no ?></td>
                                     <td><?php echo $d['perawatan'] ?></td>
-                                    <td><?php $tanggal = $d['tanggal_masuk']; echo date("d M Y", strtotime($tanggal)) ?></td>
+                                    <td><?php $tanggal = $d['tanggal_masuk']; echo date("d-m-Y", strtotime($tanggal)) ?></td>
                                     <td><?php echo $d['no_reg'] ?></td>
                                     <td><?php echo $d['no_rm'] ?></td>
                                     <td><?php echo $d['nama_lengkap']?></td>
                                     <td><?php echo $d['poli'] ?></td>
-                                    <td><?php echo $d['berat_badan'] ?></td>
                                     <td><?php echo $d['suhu_badan'] ?></td>
-                                    <td><?php echo $d['tinggi_badan'] ?></td>
-                                    <td><?php echo $d['gol_darah'] ?></td>
-                                    <td><?php echo $d['sistole'] ?></td>
-                                    <td><?php echo $d['diastole'] ?></td>
                                     <td>
                                         <!-- <a href="editpasien.php?no_rm=<?php echo $d['no_rm'] ?>"><i class='far fa-edit' style="color:#4FBDBA"></i></a> -->
                                         <a href="" onClick="confirm_modal('proses-hapus-pemeriksaan.php?id=<?php echo $d['id'] ?>')" data-bs-toggle="modal" data-bs-target="#ModalDelete"><i class='fas fa-trash-alt' style="color:red"></i></a>
+                                        <a href='#' class='more-info' data-id='<?php echo $d['no_reg'] ?>' data-bs-toggle='modal' data-bs-target='#moreinfo'>More</a><br><br>
+                                        <?php 
+                                            if ($d['layanan'] == "BPJS"){
+                                        ?> 
+                                        <a href="" class="btn-klaim">
+                                        <i class="fa-solid fa-clipboard"></i>E-Klaim
+                                        </a>
+                                        <?php
+                                            } else{
+                                                echo "";
+                                            }
+                                        ?>
+                                        
                                     </td>
                                 </tr>
                                 <?php $no++; } ?>
@@ -270,28 +276,60 @@ $halaman = ceil($totaldata/$perPage);
         </div>
         <!-- Modal Popup untuk delete-->
         <div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Perhatian!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Yakin Untuk Menghapus data ?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <a href="#" type="button" class="btn btn-danger" id="delete_link">Hapus</a>
-                    </div>
-                    </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Perhatian!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Yakin Untuk Menghapus data ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <a href="#" type="button" class="btn btn-danger" id="delete_link">Hapus</a>
+                </div>
                 </div>
             </div>
+        </div>
+        <!-- Modal More Info -->
+        <div class="modal fade" id="moreinfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Pemeriksaan Pasien</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body isi-modal">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+            </div>
+        </div>
+        </div>
     </div>
 
 
     <script src="../js/script.js"></script>
     <script src="../js/load.js"></script>
     <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Menampilkan data obat -->
+    <script>
+        $(function(){
+            $(document).on('click','.more-info',function(e){
+                e.preventDefault();
+                $("#moreinfo").modal('show');
+                $.post('more-info.php',{id:$(this).attr('data-id')},
+                    function(html){
+                        $(".isi-modal").html(html);
+
+                    });
+            });
+        });
+    </script>
 
     <!-- Javascript untuk popup modal Delete-->
     <script type="text/javascript">

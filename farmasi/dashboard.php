@@ -15,7 +15,7 @@ if($keterangan != "Farmasi") {
 
 </head>
 
-<body onload="harian(), hide_loading()">
+<body onload="initcalender(), hide_loading()">
     <!-- Loading First -->
     <div class="loading overlayer">
         <div class="spinner"></div>
@@ -111,7 +111,7 @@ if($keterangan != "Farmasi") {
         </div>
         <!-- Card -->
         <div class="cardbox3">
-            <div class="card-2">
+            <a href="notfound.html" class="card-2">
                 <div>
                     <div class="number">15</div>
                     <div class="keterangan">Total Pasien Harian</div>
@@ -119,8 +119,8 @@ if($keterangan != "Farmasi") {
                 <div class="iconCard">
                     <i class='fas fa-hand-holding-medical'></i>
                 </div>
-            </div>
-            <div class="card-2">
+            </a>
+            <a href="notfound.html" class="card-2">
                 <div>
                     <div class="number">150</div>
                     <div class="keterangan">Total Pasien</div>
@@ -128,8 +128,8 @@ if($keterangan != "Farmasi") {
                 <div class="iconCard">
                     <i class='fas fa-hospital-user'></i>
                 </div>
-            </div>
-            <div class="card-2">
+            </a>
+            <a href="notfound.html" class="card-2">
                 <div>
                     <div class="number">25</div>
                     <div class="keterangan">User Active</div>
@@ -137,7 +137,7 @@ if($keterangan != "Farmasi") {
                 <div class="iconCard">
                     <i class='fas fa-users'></i>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- data preview dashboard -->
@@ -166,22 +166,91 @@ if($keterangan != "Farmasi") {
             </div>
             <!-- Preview Jam Pengingat -->
             <div class="clock">
-                <div class="headeer">
-                    <div class="analog">
-                        <div class="jam">
-                            <div class="hr" id="hr"></div>
+                <div class="container-clock">
+                    <div class="ClockHolder">
+                        <div class="WeekDays">
+                            <span>sabtu</span>
+                            <span>minggu</span>
+                            <span>senin</span>
+                            <span>selasa</span>
+                            <span>rabu</span>
+                            <span>kamis</span>
+                            <span>jumat</span>
                         </div>
-                        <div class="menit">
-                            <div class="mn" id="mn"></div>
+                    <div class="TimeHolder">
+                        <div class="TimeOptions">
+                            <span id="hari" class="hari">Day</span>
+                            <span id="tanggal" class="tanggal">Tanggal</span>
+                            <span id="bulan" class="bulan">Month</span>
+                            <span id="tahun" class="tahun">Years</span>
                         </div>
-                        <div class="detik">
-                            <div class="sc" id="sc"></div>
+                        <div class="Numbers">
+                            <div class="NumberHolder H1">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>  
+                            <div class="NumberHolder H2">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <span>:</span>
+                            <div class="NumberHolder M1">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <div class="NumberHolder M2">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <span>:</span>
+                            <div class="NumberHolder S1">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <div class="NumberHolder S2">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
                         </div>
-                        <div class="date">
-                            <span class="dino" id="dayname">Day</span>
-                            <span class="wulan" id="month">Month</span>
-                            <span class="tanggal" id="daynum">00</span>
-                            <span class="taun"id="year">Year</span>
+                        <div class="TimeFormat">
+                            <div class="Type">
+                                <span>12hr</span>
+                                <span class="active">24hr</span>
+                            </div>
+                            <div class="Formats">
+                                <span>am</span>
+                                <span>pm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,7 +314,7 @@ if($keterangan != "Farmasi") {
                 setTimeout(function() {
                     update();
                     selesai(); 
-                }, 200);
+                }, 1000);
             }
             
             function update() {
@@ -266,7 +335,7 @@ if($keterangan != "Farmasi") {
                             var visible = "Disable";
                         }
 
-                        $(tampildata).append("<tr><td>"+this['no_reg']+"</td><td>"+this['no_rm']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['jenis_layanan']+"</td><td><a href='facebook.com' class='btn-pelayanan lihat-obat' data-id='"+this['no_reg']+"' data-bs-toggle='modal' data-bs-target='#detailobat'>Lihat Obat</a></td></tr>");
+                        $(tampildata).append("<tr><td>"+this['no_reg']+"</td><td>"+this['no_rm']+"</td><td>"+this['nama_pasien']+"</td><td>"+this['jenis_layanan']+"</td><td><a href='#' class='btn-pelayanan lihat-obat' data-id='"+this['no_reg']+"' data-bs-toggle='modal' data-bs-target='#detailobat'>Lihat Obat</a></td></tr>");
                     });
                 });
             }

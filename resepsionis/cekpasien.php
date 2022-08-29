@@ -187,8 +187,8 @@ require_once("../authuser.php");
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="radio" name="layanan" value="BPJS" checked>&nbsp; <b>BPJS</b>
-                                <input type="radio" name="layanan" style="margin-left: 10px;" value="umum">&nbsp; <b>UMUM<b>
+                                <input type="radio" name="layanan" value="BPJS">&nbsp; <b>BPJS</b>
+                                <input type="radio" name="layanan" style="margin-left: 10px;" value="umum" checked>&nbsp; <b>UMUM<b>
                             </td>
                         </tr>
                         <tr>

@@ -13,15 +13,16 @@ include'../koneksi.php';
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" href="fontawesome/css/all.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="shortcut icon" href="../assets/Proyek Baru.png">
     <title>Klinik Daqu Sehat</title>
 
 </head>
 
-<body onload="harian(), hide_loading()">
-    <div class="loading overlayer">
+<body onload="initcalender(), hide_loading()">
+    <!-- <div class="loading overlayer">
         <div class="spinner"></div>
-    </div>
+    </div> -->
     <div class="contain">
         <div class="navigasi">
             <ul>
@@ -137,7 +138,7 @@ include'../koneksi.php';
         </div>
         <!-- Card -->
         <div class="cardbox3">
-            <div class="card-2">
+            <a href="notfound.html" class="card-2">
                 <div>
                     <div class="number">15</div>
                     <div class="keterangan">Total Pasien Harian</div>
@@ -145,8 +146,8 @@ include'../koneksi.php';
                 <div class="iconCard">
                     <i class='fas fa-hand-holding-medical'></i>
                 </div>
-            </div>
-            <div class="card-2">
+            </a>
+            <a href="notfound.html" class="card-2">
                 <div>
                     <div class="number"><?php echo $totalpasien; ?></div>
                     <div class="keterangan">Total Pasien</div>
@@ -154,8 +155,8 @@ include'../koneksi.php';
                 <div class="iconCard">
                     <i class='fas fa-hospital-user'></i>
                 </div>
-            </div>
-            <div class="card-2">
+            </a>
+            <a href="notfound.html" class="card-2">
                 <div>
                     <div class="number">25</div>
                     <div class="keterangan">User Active</div>
@@ -163,7 +164,7 @@ include'../koneksi.php';
                 <div class="iconCard">
                     <i class='fas fa-users'></i>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- data preview dashboard -->
@@ -195,22 +196,91 @@ include'../koneksi.php';
             </div>
             <!-- Preview Jam Pengingat -->
             <div class="clock">
-                <div class="headeer">
-                    <div class="analog">
-                        <div class="jam">
-                            <div class="hr" id="hr"></div>
+                <div class="container-clock">
+                    <div class="ClockHolder">
+                        <div class="WeekDays">
+                            <span>sabtu</span>
+                            <span>minggu</span>
+                            <span>senin</span>
+                            <span>selasa</span>
+                            <span>rabu</span>
+                            <span>kamis</span>
+                            <span>jumat</span>
                         </div>
-                        <div class="menit">
-                            <div class="mn" id="mn"></div>
+                    <div class="TimeHolder">
+                        <div class="TimeOptions">
+                            <span id="hari" class="hari">Day</span>
+                            <span id="tanggal" class="tanggal">Tanggal</span>
+                            <span id="bulan" class="bulan">Month</span>
+                            <span id="tahun" class="tahun">Years</span>
                         </div>
-                        <div class="detik">
-                            <div class="sc" id="sc"></div>
+                        <div class="Numbers">
+                            <div class="NumberHolder H1">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>  
+                            <div class="NumberHolder H2">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <span>:</span>
+                            <div class="NumberHolder M1">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <div class="NumberHolder M2">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <span>:</span>
+                            <div class="NumberHolder S1">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
+                            <div class="NumberHolder S2">
+                                <span class="d1"></span>
+                                <span class="d2"></span>
+                                <span class="d3"></span>
+                                <span class="d4"></span>
+                                <span class="d5"></span>
+                                <span class="d6"></span>
+                                <span class="d7"></span>
+                            </div>
                         </div>
-                        <div class="date">
-                            <span class="dino" id="dayname">Day</span>
-                            <span class="wulan" id="month">Month</span>
-                            <span class="tanggal" id="daynum">00</span>
-                            <span class="taun"id="year">Year</span>
+                        <div class="TimeFormat">
+                            <div class="Type">
+                                <span>12hr</span>
+                                <span class="active">24hr</span>
+                            </div>
+                            <div class="Formats">
+                                <span>am</span>
+                                <span>pm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -228,8 +298,6 @@ include'../koneksi.php';
     <script src="../js/script.js"></script>
     <script src="../js/load.js"></script>
     <script src="../js/clock.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     
         <script type="text/javascript">
             

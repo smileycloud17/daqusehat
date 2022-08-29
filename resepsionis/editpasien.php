@@ -187,10 +187,41 @@ require_once("../authuser.php");
                         <tr>
                             <th>Alamat</th>
                             <th><textarea name="alamat" id="" cols="35" rows="5"><?php echo $d['alamat'] ?></textarea></th>
-                            <th align="center">Alamat Domisili</th>
-                            <th><input type="text" name="domisili" id="alamatdom" value="<?php echo $d['domisili'] ?>"</input></th> 
                         </tr>
-                    </tbody>
+                        <tr>
+                                <th>Alergi Makanan</th>
+                                <th><select name="a_makanan" id="a_makanan">
+                                    <option value="Tidak Ada" <?php echo $d['alergi_makanan'] == 'Tidak Ada' ? 'selected="selected"' : '' ?>>Tidak Ada</option>
+                                    <option value="Seafood" <?php echo $d['alergi_makanan'] == 'Seafood' ? 'selected="selected"' : '' ?>>Seafood</option>
+                                    <option value="Gandum" <?php echo $d['alergi_makanan'] == 'Gandum' ? 'selected="selected"' : '' ?>>Gandum</option>
+                                    <option value="Susu Sapi" <?php echo $d['alergi_makanan'] == 'Susu Sapi' ? 'selected="selected"' : '' ?>>Susu Sapi</option>
+                                    <option value="Kacang-kacangan" <?php echo $d['alergi_makanan'] == 'Kacang-kacangan' ? 'selected="selected"' : '' ?>>Kacang-kacangan</option>
+                                    <option value="Makanan Lain" <?php echo $d['alergi_makanan'] == 'Makanan Lain' ? 'selected="selected"' : '' ?>>Makanan Lain</option>
+                                </select></th>
+                            </tr>
+                            <tr>
+                                <th>Alergi Udara</th>
+                                <th><select name="a_udara" id="a_udara">
+                                    <option value="Tidak Ada" <?php echo $d['alergi_udara'] == 'Tidak Ada' ? 'selected="selected"' : '' ?>>Tidak Ada</option>
+                                    <option value="Udara Panas" <?php echo $d['alergi_udara'] == 'Udara Panas' ? 'selected="selected"' : '' ?>>Udara Panas</option>
+                                    <option value="Udara Dingin" <?php echo $d['alergi_udara'] == 'Udara Dingin' ? 'selected="selected"' : '' ?>>Udara Dingin</option>
+                                    <option value="Udara kotor" <?php echo $d['alergi_udara'] == 'Udara kotor' ? 'selected="selected"' : '' ?>>Udara kotor</option>
+                                </select></th>
+                            </tr>
+                            <tr>
+                                <th>Alergi Obat</th>
+                                <th><select name="a_obat" id="a_obat">
+                                <option value="Tidak Ada" <?php echo $d['alergi_obat'] == 'Tidak Ada' ? 'selected="selected"' : '' ?>>Tidak Ada</option>
+                                <option value="Antibiotik" <?php echo $d['alergi_obat'] == 'Antibiotik' ? 'selected="selected"' : '' ?>>Antibiotik</option>
+                                <option value="Antiinflamasi" <?php echo $d['alergi_obat'] == 'Antiinflamasi' ? 'selected="selected"' : '' ?>>Antiinflamasi</option>
+                                <option value="Non Steroid" <?php echo $d['alergi_obat'] == 'Non Steroid' ? 'selected="selected"' : '' ?>>Non Steroid</option>
+                                <option value="Aspirin" <?php echo $d['alergi_obat'] == 'Aspirin' ? 'selected="selected"' : '' ?>>Aspirin</option>
+                                <option value="Kortikosteroid" <?php echo $d['alergi_obat'] == 'Kortikosteroid' ? 'selected="selected"' : '' ?>>Kortikosteroid</option>
+                                <option value="Insulin" <?php echo $d['alergi_obat'] == 'Insulin' ? 'selected="selected"' : '' ?>>Insulin</option>
+                                <option value="Obat-Obatan Lain" <?php echo $d['alergi_obat'] == 'Obat-Obatan Lain' ? 'selected="selected"' : '' ?>>Obat-Obatan Lain</option>
+                                </select></th>
+                            </tr>
+                        </tbody>
                 </table>
                 <div class="btnpemeriksaan">
                         <a href="datapasien.php">Kembali</a>

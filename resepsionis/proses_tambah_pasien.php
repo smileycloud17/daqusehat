@@ -14,7 +14,6 @@ $nama_ortu = $_POST['nama_ortu'];
 $no_telp = $_POST['no_telp'];
 $tanggal_lahir = $_POST['tanggal_lahir'];
 $alamat = $_POST['alamat'];
-$domisili = $_POST['domisili'];
 $agama = $_POST['agama'];
 $provinsi = $_POST['provinsi'];
 $kabupaten = $_POST['kabupaten'];
@@ -22,8 +21,11 @@ $kecamatan = $_POST['kecamatan'];
 $kelurahan = $_POST['kelurahan'];
 $rt = $_POST['rt'];
 $rw = $_POST['rw'];
-$simpan = mysqli_query($koneksi,"INSERT INTO tb_pasien_resepsionis (id,no_rm,no_bpjs,nik,nama_pasien,jenis_kelamin,status_menikah,nama_ortu,no_telp,tanggal_lahir,alamat,domisili,agama,provinsi,kabupaten,kecamatan,kelurahan,rt,rw) 
-VALUES ('$no_id','$no_rm','$no_bpjs','$nik','$nama','$jenis_kelamin','$status_menikah','$nama_ortu','$no_telp','$tanggal_lahir','$alamat','$domisili','$agama','$provinsi','$kabupaten','$kecamatan','$kelurahan','$rt','$rw')");
+$a_makanan = $_POST['a_makanan'];
+$a_udara = $_POST['a_udara'];
+$a_obat = $_POST['a_obat'];
+$simpan = mysqli_query($koneksi,"INSERT INTO tb_pasien_resepsionis (id,no_rm,no_bpjs,nik,nama_pasien,jenis_kelamin,status_menikah,nama_ortu,no_telp,tanggal_lahir,alamat,agama,provinsi,kabupaten,kecamatan,kelurahan,rt,rw,alergi_makanan,alergi_udara,alergi_obat) 
+VALUES ('$no_id','$no_rm','$no_bpjs','$nik','$nama','$jenis_kelamin','$status_menikah','$nama_ortu','$no_telp','$tanggal_lahir','$alamat','$agama','$provinsi','$kabupaten','$kecamatan','$kelurahan','$rt','$rw','$a_makanan','$a_udara','$a_obat')");
  
 if ($simpan) {
     echo "

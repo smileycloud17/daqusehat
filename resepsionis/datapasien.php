@@ -229,7 +229,6 @@ function hitung_umur($tanggal_lahir){
                                 <th>Gender</th>
                                 <th>No Telp</th>
                                 <th>Alamat</th>
-                                <th>Alamat Domisili</th>
                                 <th>Agama</th>
                                 <th>Action</th>
                             </tr>
@@ -251,7 +250,6 @@ function hitung_umur($tanggal_lahir){
                                     <td><?php echo $d['jenis_kelamin'] ?></td>
                                     <td><?php echo $d['no_telp'] ?></td>
                                     <td><?php echo $d['alamat'] ?></td>
-                                    <td><?php echo $d['domisili'] ?></td>
                                     <td><?php echo $d['agama'] ?></td>
                                     <td>
                                         <a href="editpasien.php?no_rm=<?php echo $d['no_rm'] ?>"><i class='far fa-edit' style="color:#4FBDBA"></i></a>

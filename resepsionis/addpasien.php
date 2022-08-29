@@ -303,8 +303,52 @@ $noidlanjut = $urutanid;
                         <tr>
                             <th>Alamat</th>
                             <th><textarea name="alamat" id="" cols="35" rows="5" ></textarea></th>
-                            <th align="center">Alamat Domisili</th>
-                            <th><input type="text" name="domisili" id="alamatdom" autocomplete="off" ></th>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th>ALERGI</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th>Makanan</th>
+                            <th><select name="a_makanan" id="a_makanan">
+                                <option value="Tidak Ada">Tidak Ada</option>
+                                <option value="Seafood">Seafood</option>
+                                <option value="Gandum">Gandum</option>
+                                <option value="Susu Sapi">Susu Sapi</option>
+                                <option value="Kacang-kacangan">Kacang-kacangan</option>
+                                <option value="Makanan Lain">Makanan Lain</option>
+                            </select></th>
+                        </tr>
+                        <tr>
+                            <th>Udara</th>
+                            <th><select name="a_udara" id="a_udara">
+                                <option value="Tidak Ada">Tidak Ada</option>
+                                <option value="Udara Panas">Udara Panas</option>
+                                <option value="Udara Dingin">Udara Dingin</option>
+                                <option value="Udara kotor">Udara kotor</option>
+                            </select></th>
+                        </tr>
+                        <tr>
+                            <th>Obat</th>
+                            <th><select name="a_obat" id="a_obat">
+                                <option value="Tidak Ada">Tidak Ada</option>
+                                <option value="Antibiotik">Antibiotik</option>
+                                <option value="Antiinflamasi">Antiinflamasi</option>
+                                <option value="Non Steroid">Non Steroid</option>
+                                <option value="Aspirin">Aspirin</option>
+                                <option value="Kortikosteroid">Kortikosteroid</option>
+                                <option value="Insulin">Insulin</option>
+                                <option value="Obat-Obatan Lain">Obat-Obatan Lain</option>
+                            </select></th>
                         </tr>
                     </tbody>
                 </table>
