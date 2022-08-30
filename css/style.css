@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -2779,6 +2780,11 @@ input[type=number] {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     text-align: center;
+}
+
+textarea{
+    font-family: sans-serif;
+    font-size: 16px;
 }
 /* responsive site  */
 

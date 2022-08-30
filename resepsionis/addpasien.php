@@ -280,7 +280,7 @@ $noidlanjut = $urutanid;
                         </tr>
                         <tr>
                             <th>Tanggal Lahir</th>
-                            <th><input class="tgl-lahir" type="date" name="tanggal_lahir" id="lahirdate"  data-date-format="DD/MMM/YYYY" placeholder="dd/mm/yyyy"></th>
+                            <th><input class="tgl-lahir" type="date" name="tanggal_lahir" id="lahirdate"  data-date-format="DD/MM/YYYY" placeholder="dd/mm/yyyy"></th>
                             <th align="center">Agama</th>
                             <th><select name="agama" id="religi" >
                                 <option value="1">--Pilih--</option>
