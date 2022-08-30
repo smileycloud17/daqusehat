@@ -250,7 +250,7 @@ $keterangan = $_SESSION["keterangan"];
                 setTimeout(function() {
                     update();
                     selesai(); 
-                }, 200);
+                }, 1000);
             }
             
             function update() {

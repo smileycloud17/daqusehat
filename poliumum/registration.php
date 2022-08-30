@@ -157,6 +157,22 @@ function hitung_umur($tanggal_lahir){
         </div>
         <!-- Form Registration  -->
         <div class="pendaftaran">
+        <div class="registrasi">
+                <?php 
+                    $data_pemeriksaan = mysqli_query($koneksi,"select * from tb_cek_pasien INNER JOIN tb_pasien_resepsionis ON tb_cek_pasien.no_rm = tb_pasien_resepsionis.no_rm where no_reg='$no_reg'");
+                    $nomor = 1;
+                    $dp = mysqli_fetch_array($data_pemeriksaan);
+                ?>
+                <form>
+                <h2>Riwayat Pemeriksaan</h2>
+                    <div class="input-details">
+                        <details class="details-riwayat-pemeriksaan">
+                            <summary class="summary-riwayat">Buka Riwayat Pemeriksaan</summary>
+                            asdasdas
+                        </details>
+                    </div>
+                </form>
+            </div>
             <div class="registrasi">
                 <?php 
                     $data_pemeriksaan = mysqli_query($koneksi,"select * from tb_cek_pasien INNER JOIN tb_pasien_resepsionis ON tb_cek_pasien.no_rm = tb_pasien_resepsionis.no_rm where no_reg='$no_reg'");

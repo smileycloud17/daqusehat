@@ -276,11 +276,11 @@ $noidlanjut = $urutanid;
                         </tr>
                         <tr>
                             <th>No Telp</th>
-                            <th><input type="text" name="no_telp" id="notlp" autocomplete="off" ></th>
+                            <th><input type="text" name="no_telp" id="notlp" autocomplete="off"></th>
                         </tr>
                         <tr>
                             <th>Tanggal Lahir</th>
-                            <th><input type="date" name="tanggal_lahir" id="lahirdate" ></th>
+                            <th><input class="tgl-lahir" type="date" name="tanggal_lahir" id="lahirdate"  data-date-format="DD/MMM/YYYY" placeholder="dd/mm/yyyy"></th>
                             <th align="center">Agama</th>
                             <th><select name="agama" id="religi" >
                                 <option value="1">--Pilih--</option>
@@ -367,6 +367,17 @@ $noidlanjut = $urutanid;
     <script src="../js/script.js"></script>
     <!-- <script src="js/jquery.js"></script> -->
     <script src="../js/load.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+
+    <script>
+        $(".tgl-lahir").on("change", function() {
+        this.setAttribute(
+            "data-date",
+            moment(this.value, "YYYY-MM-DD")
+            .format( this.getAttribute("data-date-format") )
+        )
+        }).trigger("change")
+    </script>
               
     <script>
     // Dropdown Searchable

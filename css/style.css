@@ -2759,6 +2759,27 @@ input[type=number] {
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
+.details-riwayat-pemeriksaan{
+    background-color: #f0f0f0;
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.summary-riwayat{
+    padding: 5px;
+    background-color: var(--hovered);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    text-align: center;
+}
 /* responsive site  */
 
 @media (max-width: 1350px)  {

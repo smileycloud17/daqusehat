@@ -16,23 +16,7 @@ $tinggi_badan = $_POST['tinggi_badan'];
 $gol_darah = $_POST['golongan_darah'];
 $sistole = $_POST['sistole'];
 $diastole = $_POST['diastole'];
-
-$no_reg = mysqli_query ($koneksi,"SELECT * FROM tb_pemeriksaan_poliumum ORDER BY id DESC LIMIT 1");
-$data_no_reg = mysqli_fetch_array($no_reg);
-
-//Kode Otomatis register Poli Umum
-$query = mysqli_query($koneksi, "SELECT max(MID(no_reg,3,3)) as RegTerbesar FROM tb_pemeriksaan_poliumum");
-$data = mysqli_fetch_array($query);
-$noreg = $data['RegTerbesar'];
-
-$urutan = (int) $noreg;
-
-$urutan++;
- 
-$huruf = "PU";
-$bulantahun = date("my");
-$noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
-
+$noreg = $_POST['no_reg'];
 
 
 $simpan = mysqli_query($koneksi,"INSERT INTO tb_cek_pasien (id,perawatan,no_reg,no_rm,nama_lengkap,tanggal_masuk,layanan,poli,berat_badan,suhu_badan,tinggi_badan,gol_darah,sistole,diastole) 
@@ -57,6 +41,4 @@ else {
         </script>
     ";
 }
-
-$no_reg = mysqli_query ($koneksi,"SELECT * FROM tb_pemeriksaan_poliumum ORDER BY id DESC");
 ?>

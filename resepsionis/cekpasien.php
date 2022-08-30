@@ -4,6 +4,26 @@ include '../koneksi.php';
 
 $keterangan = $_SESSION["keterangan"];
 require_once("../authuser.php");
+
+//Kode Otomatis register Poli Umum
+$nourut = mysqli_query($koneksi, "SELECT MID(no_reg,3,3) as RegTerbesar FROM tb_pemeriksaan_poliumum ORDER BY id DESC LIMIT 1");
+$data = mysqli_fetch_array($nourut);
+$tanggal = mysqli_query($koneksi, "SELECT RIGHT(no_reg,4) as tanggal_noreg FROM tb_cek_pasien ORDER BY id DESC LIMIT 1");
+$dtanggal = mysqli_fetch_array($tanggal);
+$noreg = $data['RegTerbesar'];
+$tanggal_terakhir = $dtanggal['tanggal_noreg'];
+
+if($tanggal_terakhir != date('my')){
+    $noreg = 0;
+}
+
+$urutan = (int) $noreg;
+
+$urutan++;
+ 
+$huruf = "PU";
+$bulantahun = date("my");
+$noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
 ?>
 <!DOCTYPE html>
 
@@ -132,7 +152,7 @@ require_once("../authuser.php");
                                         echo $_SESSION['keterangan']; ?></small>
                         </div>
                         <a href="editprofile"><button class="links sub1"><i class="fas fa-user-alt"></i>Edit Profile</button></a>
-                        <a href="logout"><button class="links sub2"><i class="fas fa-sign-out-alt"></i>Logout</button></a>
+                        <a href="../logout"><button class="links sub2"><i class="fas fa-sign-out-alt"></i>Logout</button></a>
                     </div>
                 </div>
             </div>
@@ -178,6 +198,8 @@ require_once("../authuser.php");
                         <tr>
                             <th>Jenis Kelamin</th>
                             <th><input type="text" name="jenis_kelamin" id="sex" readonly></th>
+                            <th align="center">No Registrasi</th>
+                            <th><input type="text" name="no_reg" id="no_reg" value="<?php echo $noreg; ?>" readonly></th>
                         </tr>
                         <tr>
                             <th>&nbsp;</th>
