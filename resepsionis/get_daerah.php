@@ -13,7 +13,7 @@ if($data == "kabupaten"){
 	?>
 	Kabupaten/Kota
 	<select id="form_kab">
-		<option value=""></option>
+		<option value="" selected>~Pilih Kabupaten~</option>
 		<?php 
 		$daerah = mysqli_query($koneksi,"SELECT kode,nama FROM wilayah_2020 WHERE LEFT(kode,'$n')='$id' AND CHAR_LENGTH(kode)=$m ORDER BY nama");
 
@@ -29,7 +29,7 @@ if($data == "kabupaten"){
 }else if($data == "kecamatan"){ 
 	?>
 	<select id="form_kec">
-		<option value=""></option>
+		<option value="" selected>~Pilih Kecamatan~</option>
 		<?php 
 		$daerah = mysqli_query($koneksi,"SELECT kode,nama FROM wilayah_2020 WHERE LEFT(kode,'$n')='$id' AND CHAR_LENGTH(kode)=$m ORDER BY nama");
 
@@ -46,7 +46,7 @@ if($data == "kabupaten"){
 	?>
 
 	<select id="form_kel">
-		<option value=""></option>
+		<option value="" selected>~Pilih Desa~</option>
 		<?php 
 		$daerah =mysqli_query($koneksi,"SELECT kode,nama FROM wilayah_2020 WHERE LEFT(kode,'$n')='$id' AND CHAR_LENGTH(kode)=$m ORDER BY nama");
 		while($d = mysqli_fetch_array($daerah)){

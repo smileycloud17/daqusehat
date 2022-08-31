@@ -8,7 +8,7 @@ require_once("../authuser.php");
 // No RM Sesuai Urutan
 error_reporting(0);
 
-    $query = mysqli_query($koneksi,"SELECT LEFT(no_rm,2) as x, MID(no_rm,3,2) as y, RIGHT(no_rm,2) as z FROM tb_pasien_resepsionis ORDER BY id DESC LIMIT 1");
+    $query = mysqli_query($koneksi,"SELECT LEFT(no_rm,2) as x, MID(no_rm,4,2) as y, RIGHT(no_rm,2) as z FROM tb_pasien_resepsionis ORDER BY id DESC LIMIT 1");
 
     $d = mysqli_fetch_array($query);
 
@@ -216,7 +216,7 @@ $noidlanjut = $urutanid;
                             <th><input type="text" name="no_bpjs" id="nobpjs" autocomplete="off"></th>
                             <th align="center">Provinsi</th>
                             <th><select name="provinsi" id="form_prov" class="form_prov" >
-                            <option value=""></option>
+		                    <option value="" selected>~Pilih Provinsi~</option>
                             <?php 
                             $daerah = mysqli_query($koneksi,"SELECT kode,nama FROM wilayah_2020 WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
                             while($d = mysqli_fetch_array($daerah)){

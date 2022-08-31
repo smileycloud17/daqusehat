@@ -261,7 +261,7 @@ $noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript">
             function isi_otomatis(){
-                var noRm = $("#rm1").val()+$("#rm2").val()+$("#rm3").val();
+                var noRm = $("#rm1").val()+'.'+$("#rm2").val()+'.'+$("#rm3").val();
                 $.ajax({
                     url: 'cekrm.php',
                     data:"no_rm="+noRm ,
