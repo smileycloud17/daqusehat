@@ -1,5 +1,6 @@
 <?php
 include "../koneksi.php";
+$id = $_POST['id'];
 $no_rm = $_POST['no_rm'];
 $no_bpjs = $_POST['no_bpjs'];
 $nik = $_POST['nik'];
@@ -11,8 +12,8 @@ $alamat = $_POST['alamat'];
 $a_makanan = $_POST['a_makanan'];
 $a_udara = $_POST['a_udara'];
 $a_obat = $_POST['a_obat'];
-$update = mysqli_query($koneksi,"UPDATE tb_pasien_resepsionis SET nama_pasien='$nama', no_bpjs='$no_bpjs', nik='$nik', jenis_kelamin='$jenis_kelamin', 
-tanggal_lahir='$tanggal_lahir', no_telp='$no_telp', alamat='$alamat', alergi_makanan='$a_makanan', alergi_udara='$a_udara', alergi_obat='$a_obat' WHERE no_rm='$no_rm'");
+$update = mysqli_query($koneksi,"UPDATE tb_pasien_resepsionis SET no_rm='$no_rm', nama_pasien='$nama', no_bpjs='$no_bpjs', nik='$nik', jenis_kelamin='$jenis_kelamin', 
+tanggal_lahir='$tanggal_lahir', no_telp='$no_telp', alamat='$alamat', alergi_makanan='$a_makanan', alergi_udara='$a_udara', alergi_obat='$a_obat' WHERE id='$id'");
     
 if ($update) {
     echo "

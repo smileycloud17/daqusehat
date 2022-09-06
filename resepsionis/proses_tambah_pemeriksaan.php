@@ -19,13 +19,16 @@ $diastole = $_POST['diastole'];
 $noreg = $_POST['no_reg'];
 
 
-$simpan = mysqli_query($koneksi,"INSERT INTO tb_cek_pasien (id,perawatan,no_reg,no_rm,nama_lengkap,tanggal_masuk,layanan,poli,berat_badan,suhu_badan,tinggi_badan,gol_darah,sistole,diastole) 
-VALUES ('','$perawatan','$noreg','$no_rm','$nama_lengkap','$tanggal_masuk','$layanan','$poli','$berat_badan','$suhu_badan','$tinggi_badan','$gol_darah','$sistole','$diastole')");
+$resepsionis = "INSERT INTO tb_cek_pasien (perawatan,no_reg,no_rm,nama_lengkap,tanggal_masuk,layanan,poli,berat_badan,suhu_badan,tinggi_badan,gol_darah,sistole,diastole) VALUES ('$perawatan','$noreg','$no_rm','$nama_lengkap','$tanggal_masuk','$layanan','$poli','$berat_badan','$suhu_badan','$tinggi_badan','$gol_darah','$sistole','$diastole')";
 
-$tambah_poliumum = mysqli_query($koneksi, "INSERT INTO tb_pemeriksaan_poliumum (id,no_reg,no_rm,tanggal_masuk,nama_pasien,jenis_layanan,status_pelayanan)
-VALUES ('','$noreg', '$no_rm','$tanggal_masuk','$nama_lengkap', '$layanan','Belum Dilayani')");
- 
-if ($simpan and $tambah_poliumum) {
+
+$poliumum = "INSERT INTO tb_pemeriksaan_poliumum (no_reg,no_rm,tanggal_masuk,nama_pasien,jenis_layanan,status_pelayanan) VALUES ('$noreg', '$no_rm','$tanggal_masuk','$nama_lengkap', '$layanan','Belum Dilayani')";
+
+$simpan_pemeriksaan = mysqli_query($koneksi, $poliumum);
+
+$simpan = mysqli_query($koneksi,$resepsionis);
+
+if ($simpan and $simpan_pemeriksaan) {
     echo "
         <script>
             alert('Berhasil Menambahkan Data Pemeriksaan');
@@ -37,8 +40,10 @@ else {
     echo "
         <script>
             alert('Gagal Menambahkan Pemeriksaan! Cek Kembali');
-            window.location = 'cekpasien.php';
+            // window.location = 'cekpasien.php';
         </script>
     ";
+    echo "Error: <br>" . mysqli_error($koneksi);
+    echo "Error: <br>" . mysqli_error($koneksi);
 }
 ?>

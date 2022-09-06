@@ -2,7 +2,7 @@
 require_once("../auth.php"); 
 include '../koneksi.php';
 
-$no_rm = $_GET['no_rm'];
+$id = $_GET['id'];
 
 $keterangan = $_SESSION["keterangan"];
 require_once("../authuser.php");
@@ -150,14 +150,14 @@ require_once("../authuser.php");
                 <table class="tabel-pasien">
                     <tbody>
                     <?php 
-                        $data = mysqli_query($koneksi,"select * from tb_pasien_resepsionis where no_rm='$no_rm'");
+                        $data = mysqli_query($koneksi,"select * from tb_pasien_resepsionis where id='$id'");
                         $nomor = 1;
                         $d = mysqli_fetch_array($data)
                         ?>
                         <tr>
                             <th>No RM</th>
-                            <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                            <th><input type="text" name="no_rm" id="noRm" value="<?php echo $d['no_rm']?>" readonly></th>
+                            <input type="text" name="id" value="<?php echo $d['id'] ?>" hidden>
+                            <th><input type="text" name="no_rm" id="noRm" value="<?php echo $d['no_rm']?>"></th>
                             <th align="center">Jenis Kelamin</th>
                             <th><select name="jenis_kelamin" id="sex">
                                 <option value="">--Jenis Kelamin--</option>

@@ -17,7 +17,7 @@ if(isset($_POST['tombol-cari'])){
 }
 
 // pagination
-$perPage = 50; //isi data perhalaman
+$perPage = 100; //isi data perhalaman
 $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
 $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
@@ -28,6 +28,20 @@ $data = mysqli_query($koneksi,"select * from tb_cek_pasien WHERE no_rm LIKE '%$c
 $totaldata = mysqli_num_rows($data);
 
 $halaman = ceil($totaldata/$perPage);
+
+$jumlahlink = 3;
+
+if($page > $jumlahlink){
+    $start_number = $page - $jumlahlink;
+} else {
+    $start_number = 1;
+}
+
+if($page < $halaman - $jumlahlink){
+    $end_number = $page + $jumlahlink;
+} else{
+    $end_number = $halaman;
+}
 ?>
 <!DOCTYPE html>
 
@@ -228,7 +242,7 @@ $halaman = ceil($totaldata/$perPage);
                                 <?php } ?>
                             </tbody>
                     </table>
-                <div aria-label="Page navigation example">
+                    <div aria-label="Page navigation example">
                         <ul class="pagination ">
                         <?php if($page == 1){ ?>
                             <li class="page-item disabled">
@@ -241,13 +255,20 @@ $halaman = ceil($totaldata/$perPage);
                         <?php } else{?>
                         <li class="page-item">
                             <?php $halaman_sekarang = isset($_GET["halaman"]) ?>
-                            <a class="page-link" href="?halaman=<?php echo $page - 1 ?>" tabindex="-1">
+                            <a class="page-link"  href="?halaman=<?php echo $page - 1 ?>" tabindex="-1">
                             <i class="fa fa-angle-left"></i>
                             <span class="sr-only">Previous</span>
                             </a>
                         </li>
                         <?php } ?>
-                        <?php for($i=1; $i<=$halaman; $i++){ ?>
+                        <?php for($i=$start_number; $i<$page; $i++){ ?>
+                        <li class="page-item"><a class="page-link" href="?halaman=<?php echo $i ?>"><?php echo $i ?></a></li>
+                        <?php } ?>
+                        <li class="page-item active"><a class="page-link" href="" readonly><?php echo $page ?></a></li>
+                        <?php 
+                            $page++;
+                            for($i=$page; $i<=$end_number; $i++){ 
+                        ?>
                         <li class="page-item"><a class="page-link" href="?halaman=<?php echo $i ?>"><?php echo $i ?></a></li>
                         <?php } ?>
                         <?php if($page == $halaman){ ?>
@@ -267,8 +288,6 @@ $halaman = ceil($totaldata/$perPage);
                         <?php } ?>
                         </ul>
                     </div>
-                    </table>
-                </div>
             </div>
             <footer>
                 <p>Copyright © 2022, Powered by Smiley Cloud ッ All rights reserved.</p>

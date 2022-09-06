@@ -18,7 +18,7 @@ if(isset($_POST['tombol-cari'])){
 // $dataresepsionis_limit = mysqli_query($koneksi,"SELECT * FROM tb_resepsionis WHERE no_rm LIKE '%$cari%' OR nama_pasien LIKE '%$cari%'");
 
 // pagination
-$perPage = 50; //isi data perhalaman
+$perPage = 100; //isi data perhalaman
 $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
 $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
@@ -216,51 +216,52 @@ function hitung_umur($tanggal_lahir){
                     <form action="cetak-datapasienresp.php">
                         <button type="submit" target="blank"><i class="fa fa-print"></i>Cetak</button>
                     </form>
-                    <table class="content-table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>No RM</th>
-                                <th>No BPJS</th>
-                                <th>NIK</th>
-                                <th>Nama Lengkap</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Umur</th>
-                                <th>Gender</th>
-                                <th>No Telp</th>
-                                <th>Alamat</th>
-                                <th>Agama</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if(mysqli_num_rows($dataresepsionis_limit)>0){ ?>
-                                <?php
-                                    $no = 1;
-                                    while($d = mysqli_fetch_array($dataresepsionis_limit)){
-                                ?>
+                    <div class="tabel-data">
+                        <table class="content-table">
+                            <thead>
                                 <tr>
-                                    <td><?php echo $no ?></td>
-                                    <td><?php echo $d['no_rm'] ?></td>
-                                    <td><?php echo $d['no_bpjs'] ?></td>
-                                    <td><?php echo $d['nik']?></td>
-                                    <td><?php echo $d['nama_pasien'] ?></td>
-                                    <td><?php $tanggal = $d['tanggal_lahir']; echo date("d M Y", strtotime($tanggal));?></td>
-                                    <td><?php echo  hitung_umur($d['tanggal_lahir']) ?></td>
-                                    <td><?php echo $d['jenis_kelamin'] ?></td>
-                                    <td><?php echo $d['no_telp'] ?></td>
-                                    <td><?php echo $d['alamat'] ?></td>
-                                    <td><?php echo $d['agama'] ?></td>
-                                    <td>
-                                        <a href="editpasien.php?no_rm=<?php echo $d['no_rm'] ?>"><i class='far fa-edit' style="color:#4FBDBA"></i></a>
-                                        <a href="" onClick="confirm_modal('proses_hapus_pasien.php?no_rm=<?php echo $d['no_rm'] ?>')" data-bs-toggle="modal" data-bs-target="#ModalDelete"><i class='fas fa-trash-alt' style="color:red"></i></a>
-                                        <!-- <a href="" onClick="confirm_modal('proses_hapus_pasien.php?no_rm=<?php echo $d['no_rm'] ?>')" data-bs-toggle="modal" data-bs-target="#ModalDelete"><p style="color: var(--tulisan); font-size: 13px; font-style: italic;">More Info</p></a> -->
-                                    </td>
+                                    <th>No</th>
+                                    <th>No RM</th>
+                                    <th>No BPJS</th>
+                                    <th>NIK</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Umur</th>
+                                    <th>Gender</th>
+                                    <th>No Telp</th>
+                                    <th>Alamat</th>
+                                    <th>Agama</th>
+                                    <th>Action</th>
                                 </tr>
-                                <?php $no++; } ?>
-                                <?php } ?>
-                            </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php if(mysqli_num_rows($dataresepsionis_limit)>0){ ?>
+                                    <?php
+                                        $no = 1;
+                                        while($d = mysqli_fetch_array($dataresepsionis_limit)){
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $no ?></td>
+                                        <td><?php echo $d['no_rm'] ?></td>
+                                        <td><?php echo $d['no_bpjs'] ?></td>
+                                        <td><?php echo $d['nik']?></td>
+                                        <td><?php echo $d['nama_pasien'] ?></td>
+                                        <td><?php $tanggal = $d['tanggal_lahir']; echo date("d M Y", strtotime($tanggal));?></td>
+                                        <td><?php echo  hitung_umur($d['tanggal_lahir']) ?></td>
+                                        <td><?php echo $d['jenis_kelamin'] ?></td>
+                                        <td><?php echo $d['no_telp'] ?></td>
+                                        <td><?php echo $d['alamat'] ?></td>
+                                        <td><?php echo $d['agama'] ?></td>
+                                        <td>
+                                            <a href="editpasien.php?id=<?php echo $d['id'] ?>"><i class='far fa-edit' style="color:#4FBDBA"></i></a>
+                                            <a href="" onClick="confirm_modal('proses_hapus_pasien.php?id=<?php echo $d['id'] ?>')" data-bs-toggle="modal" data-bs-target="#ModalDelete"><i class='fas fa-trash-alt' style="color:red"></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php $no++; } ?>
+                                    <?php } ?>
+                                </tbody>
+                        </table>
+                    </div>
                     <div aria-label="Page navigation example">
                         <ul class="pagination ">
                         <?php if($page == 1){ ?>
@@ -274,13 +275,20 @@ function hitung_umur($tanggal_lahir){
                         <?php } else{?>
                         <li class="page-item">
                             <?php $halaman_sekarang = isset($_GET["halaman"]) ?>
-                            <a class="page-link" href="?halaman=<?php echo $page - 1 ?>" tabindex="-1">
+                            <a class="page-link"  href="?halaman=<?php echo $page - 1 ?>" tabindex="-1">
                             <i class="fa fa-angle-left"></i>
                             <span class="sr-only">Previous</span>
                             </a>
                         </li>
                         <?php } ?>
-                        <?php for($i=$start_number; $i<=$end_number; $i++){ ?>
+                        <?php for($i=$start_number; $i<$page; $i++){ ?>
+                        <li class="page-item"><a class="page-link" href="?halaman=<?php echo $i ?>"><?php echo $i ?></a></li>
+                        <?php } ?>
+                        <li class="page-item active"><a class="page-link" href="" readonly><?php echo $page ?></a></li>
+                        <?php 
+                            $page++;
+                            for($i=$page; $i<=$end_number; $i++){ 
+                        ?>
                         <li class="page-item"><a class="page-link" href="?halaman=<?php echo $i ?>"><?php echo $i ?></a></li>
                         <?php } ?>
                         <?php if($page == $halaman){ ?>

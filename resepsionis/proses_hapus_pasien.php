@@ -1,7 +1,7 @@
 <?php
 include "../koneksi.php";
-$no_rm = $_GET['no_rm'];
-$update = mysqli_query($koneksi,"DELETE FROM tb_pasien_resepsionis WHERE no_rm='$no_rm'");
+$id = $_GET['id'];
+$update = mysqli_query($koneksi,"DELETE FROM tb_pasien_resepsionis WHERE id='$id'");
     
 if ($update) {
     echo "

@@ -4,6 +4,7 @@ include '../koneksi.php';
 
 $keterangan = $_SESSION["keterangan"];
 require_once("../authuser.php");
+error_reporting(0);
 
 //Kode Otomatis register Poli Umum
 $nourut = mysqli_query($koneksi, "SELECT MID(no_reg,3,3) as RegTerbesar FROM tb_pemeriksaan_poliumum ORDER BY id DESC LIMIT 1");
@@ -164,7 +165,7 @@ $noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
                     <h2>Pemeriksaan Pasien</h2>
                     <small> <b>Pasien Baru</b> </small>
                 </div>
-                <form action="proses_tambah_pemeriksaan.php" method="post">
+                <form action="proses_tambah_pemeriksaan.php" method="POST">
                 <table class="tabel-cek">
                     <tbody>
                         <tr>
@@ -184,10 +185,9 @@ $noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
                                 -
                                 <input type="number" name="no_rm3" required="required" id="rm3" style="width: 40px;" onkeyup="isi_otomatis()" autocomplete='off'>
                             </th>
-                            <!-- <button  class="cekrm" type="submit">check</button></th> -->
                             <th align="center">Tanggal Masuk</th>
                             <input type="text" name="tanggal_masuk" id="tglmasuk" value="<?php echo date("Y-m-d") ?>" hidden>
-                            <th><input type="text" name="tanggal_masuk-tampil" id="tglmasuk-tampil" value="<?php echo date("d-m-Y") ?>" readonly></th>
+                            <th><input type="text" name="tanggal_masuk_tampil" id="tglmasuk-tampil" value="<?php echo date("d-m-Y") ?>" readonly></th>
                         </tr>
                         <tr>
                             <th>Nama Lengkap</th>
@@ -217,11 +217,11 @@ $noreg = $huruf . sprintf("%03s", $urutan) . $bulantahun;
                             <th>Pilih Poli</th>
                             <th><select name="poli" id="jnsprksa">
                                 <option value="">--Pilih Pemeriksaan--</option>
-                                <option value="umum">Poli Umum</option>
-                                <option value="kia">KIA</option>
-                                <option value="lab">Labortarium</option>
-                                <option value="rawatjalan">Rawat Jalan</option>
-                                <option value="gigi">Poli Gigi</option>
+                                <option value="Poli Umum">Poli Umum</option>
+                                <option value="KIA">KIA</option>
+                                <option value="Laboratorium">Labortarium</option>
+                                <option value="Rawat Jalan">Rawat Jalan</option>
+                                <option value="Poli Gigi">Poli Gigi</option>
                             </select></th> 
                         </tr>
                         <tr>
